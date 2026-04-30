@@ -1,0 +1,7 @@
+# Nix
+result
+result-*
+/.direnv/
+
+# Uiua
+/uiua-modules/cache/
