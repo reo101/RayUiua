@@ -13,13 +13,16 @@ GetReturnType ← °□get "returnType"
 GetParams     ← |1 ⍣(°□get "params"){}
 GetFields     ← °□get "fields"
 
+AssertStringLiteral ← ⍤"Expected string literal" /× =@" ⊂ ⊃(⊡0|⊡¯1) ⯾₁∞ °□⊢
+
 TitleWord    ← ⍜⊡⌵0¯⌵
 SplitUnders  ← ⊜□⊸≠@_
 Quote        ← $"\"_\""
-JoinWords    ← /$"_ _"
-JoinLines    ← /$"_\n_"
-JoinBlocks   ← /$"_\n\n_"
-JoinBars     ← /$"_|_"
+JoinBy!      ←^ $"$\"\__\_\"" ⇌↘1⇌↘1 °□⊢ ⊸AssertStringLiteral
+JoinWords    ← /JoinBy!" "
+JoinLines    ← /JoinBy!"\n"
+JoinBlocks   ← /JoinBy!"\n\n"
+JoinBars     ← /JoinBy!"|"
 ExtractNums  ← ≡⋕ ⊜□⊸∊Digits
 Starts       ← |2 ⊢⌕
 QuoteMask    ← >0 ⦷ @"
@@ -53,7 +56,7 @@ EnumRenames ← comptime(map {
     "ShaderLocation"
   })
 
-ColorPrefixLen   ← |1 ($"/+ ⊃[_]" /$"_|_" ˙⍚$"((×⧻\"_\") Starts \"_\")" QuotedWords °□⊢)^!{"DARK" "LIGHT" "RAY"}
+ColorPrefixLen   ← |1 ($"/+ ⊃[_]" JoinBars ˙⍚$"((×⧻\"_\") Starts \"_\")" QuotedWords °□⊢)^!{"DARK" "LIGHT" "RAY"}
 SplitColorName   ← |2 ⊂ ∩TitleWord⊃(↙|↘)
 SpecialColorName ← |1 SplitColorName ColorPrefixLen ⊸∘
 ColorName        ← |1 ⨬(TitleWord|SpecialColorName) >0 ColorPrefixLen ⊸∘
