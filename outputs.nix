@@ -123,6 +123,8 @@ inputs.flake-parts.lib.mkFlake { inherit inputs; } (
             self'.packages.raylib
             pkgs.sdl3
           ];
+
+          env.RAYLIB_API_JSON = "${self'.packages.raylib.src}/tools/rlparser/output/raylib_api.json";
         };
       };
   }
