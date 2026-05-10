@@ -9,11 +9,11 @@ Raylib ~ "../lib/raylib"
 
 Loop ← (
   # &s "frame"
-  ◌ Raylib.BeginDrawing {}
-  ◌ Raylib.ClearBackground {Raylib.Color.Green}
-  ◌ Raylib.DrawRectangle {80 80 160 80 Raylib.Color.White}
-  ◌ Raylib.DrawText {"green" 124 110 20 Raylib.Color.Black}
-  ◌ Raylib.EndDrawing {}
+  under(Raylib.BeginDrawing)(
+    ◌ Raylib.ClearBackground {Raylib.Color.Green}
+    ◌ Raylib.DrawRectangle {80 80 160 80 Raylib.Color.White}
+    ◌ Raylib.DrawText {"green" 124 110 20 Raylib.Color.Black}
+  )
 )
 
 ⍢(Loop|¬Raylib.WindowShouldClose {}) 0

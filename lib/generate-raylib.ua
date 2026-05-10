@@ -264,18 +264,27 @@ RenderDefines   ← |1 RenderColorBlock GetDefines
 RenderEnums     ← |1 JoinBlocks ⍚RenderEnumBlock GetEnums
 LookupParamType ← |1 TypeName °□get "type"
 
-BuildFunction ← |1 (
-  ⊃(DigitNames GetName
-  | (
-      ⊃(TypeName GetReturnType|Quote GetName|JoinWords ⍚LookupParamType GetParams)
-      $"_ _ _"
-    )
-  )
-  $"_ ← Lib {_}"
+BindingName      ← |1 DigitNames GetName
+BuildFunctionSig ← |1 (
+  ⊃(TypeName GetReturnType|Quote GetName|JoinWords ⍚LookupParamType GetParams)
+  $"_ _ _"
 )
+BeginPairName ← |1 $"End_" ↘5 GetName
+BuildEndSigFromBegin ← |1 $"\"void\" \"_\" " BeginPairName
+BeginFunction ← |1 >0 /+ Starts "Begin" GetName
 
-RenderFunction  ← |1 BuildFunction
-RenderFunctions ← |1 JoinLines ⍚RenderFunction GetFunctions
+BuildFunction ← |1 $"_ ← Lib {_}" ⊃(BindingName|BuildFunctionSig)
+BuildBeginObverse ← |1 (
+  $"_ ← ⌅(Lib {_}|Lib {_})" ⊃(BindingName|BuildFunctionSig|BuildEndSigFromBegin)
+)
+BuildEndUn ← |1 $"_ ← °_" ⊃(DigitNames BeginPairName|BindingName)
+BuildBeginEndPair ← |1 $"_\n_" ⊃(BuildBeginObverse|BuildEndUn)
+
+RenderFunctions ← |1 (
+  Fns ← GetFunctions
+  BeginFns ← ▽⊃(≡◇BeginFunction|∘) Fns
+  $"_\n_" ⊃(JoinLines ⍚BuildFunction Fns|JoinLines ⍚BuildBeginEndPair BeginFns)
+)
 RenderParts     ← ⊃(⋅StaticPrelude|RenderTypePrelude|RenderDefines|RenderEnums|RenderFunctions)
 
 GenerateBody ← |1 $"_\n\n_\n\n_\n\n_\n\n# Top-level function bindings.\n_" RenderParts
