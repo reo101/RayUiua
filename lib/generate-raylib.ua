@@ -222,8 +222,8 @@ ValueLayoutFields ← ▽⊃(≡◇(has⊙ValueLayoutMap GetType)|∘)
 StructLayoutArgs  ← |1 JoinWords ⍚FieldLayout ValueLayoutFields GetFields
 
 RenderStructLayout ← |1 (
-  ⊃(StructLayoutName|StructLayoutBody|StructLayoutArgs)
-  $"_ ← $\"{_}\" _"
+  ⊃(StructLayoutName|StructLayoutBody|⊸(⍣(""°0|" "◌)⧻)StructLayoutArgs)
+  $"_ ← $\"{_}\"__"
 )
 
 RenderAliasLayout ← |1 (
@@ -264,7 +264,13 @@ RenderDefines   ← |1 RenderColorBlock GetDefines
 RenderEnums     ← |1 JoinBlocks ⍚RenderEnumBlock GetEnums
 LookupParamType ← |1 TypeName °□get "type"
 
-BindingName      ← |1 DigitNames GetName
+BindingName     ← |1 DigitNames GetName
+BindingArgCount ← |1 ⧻ GetParams
+BindingArity    ← |1 $"|_" °⋕ BindingArgCount
+VoidSignature   ← |1 $"_.0" BindingArity
+NoBindingArgs   ← |1 =0 BindingArgCount
+NonzeroArgPack  ← |1 $"□,_" °⋕ BindingArgCount
+ArgumentPack    ← |1 ⨬(NonzeroArgPack|⋅"{}") ⊸NoBindingArgs
 BuildFunctionSig ← |1 (
   ⊃(TypeName GetReturnType|Quote GetName|JoinWords ⍚LookupParamType GetParams)
   $"_ _ _"
@@ -273,13 +279,17 @@ BeginPairName ← |1 $"End_" ↘5 GetName
 BeginFunction ← |1 >0 /+ Starts "Begin" GetName
 EndFunction   ← |1 >0 /+ Starts "End" GetName
 
-BuildReturnFunction ← |1 $"_ ← Lib {_}" ⊃(BindingName|BuildFunctionSig)
-BuildVoidFunction   ← |1 $"_ ← |1.0 (◌ (Lib {_}))" ⊃(BindingName|BuildFunctionSig)
-BuildFunction       ← |1 ⨬(BuildReturnFunction|BuildVoidFunction) ⊸(≍"void" GetReturnType)
-BuildEndUn ← |1 $"_ ← °_" ⊃(DigitNames BeginPairName|BindingName)
+BuildReturnStack     ← |1 $"_ ← _ (Lib {_}) _" ⊃(BindingName|BindingArity|BuildFunctionSig|ArgumentPack)
+BuildVoidStack       ← |1 $"_ ← _ ◌ ((Lib {_}) _)" ⊃(BindingName|VoidSignature|BuildFunctionSig|ArgumentPack)
+BuildReturnBoxed     ← |1 $"_ ← Lib {_}" ⊃(BindingName|BuildFunctionSig)
+BuildVoidBoxed       ← |1 $"_ ← |1.0 (◌ (Lib {_}))" ⊃(BindingName|BuildFunctionSig)
+BuildReturnFunction  ← |1 ⨬(BuildReturnStack|BuildReturnBoxed) ⊸NoBindingArgs
+BuildVoidFunction    ← |1 ⨬(BuildVoidStack|BuildVoidBoxed) ⊸NoBindingArgs
+BuildFunction        ← |1 ⨬(BuildReturnFunction|BuildVoidFunction) ⊸(≍"void" GetReturnType)
+BuildEndUn           ← |1 $"_ ← °_" ⊃(DigitNames BeginPairName|BindingName)
 BuildEndSigFromBegin ← |1 $"\"void\" \"_\" " BeginPairName
 BuildBeginObverse ← |1 (
-  $"_ ← ⌅(Lib {_}||1 (⊙(Lib {_})))" ⊃(BindingName|BuildFunctionSig|BuildEndSigFromBegin)
+  $"_ ← _ ⌅((Lib {_}) _||1 (⊙(Lib {_}) {}))" ⊃(BindingName|BindingArity|BuildFunctionSig|ArgumentPack|BuildEndSigFromBegin)
 )
 BuildBeginEndPair ← |1 $"_\n_" ⊃(BuildBeginObverse|BuildEndUn)
 
@@ -290,7 +300,7 @@ RenderFunctions ← |1 (
   RegularFns ← ▽⊃(¬≡◇PairedFunction|∘) Fns
   $"_\n_" ⊃(JoinLines ⍚BuildFunction RegularFns|JoinLines ⍚BuildBeginEndPair BeginFns)
 )
-RenderParts     ← ⊃(⋅StaticPrelude|RenderTypePrelude|RenderDefines|RenderEnums|RenderFunctions)
+RenderParts ← ⊃(⋅StaticPrelude|RenderTypePrelude|RenderDefines|RenderEnums|RenderFunctions)
 
 GenerateBody ← |1 $"_\n\n_\n\n_\n\n_\n\n# Top-level function bindings.\n_" RenderParts
 
