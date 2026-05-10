@@ -1,21 +1,31 @@
 # Experimental!
 
-Raylib ~ "../lib/raylib"
+RL ~ "../lib/raylib"
 
-◌ Raylib.SetConfigFlags {Raylib.ConfigFlags.FlagWindowResizable}
+RL.SetConfigFlags {RL.ConfigFlags.FlagWindowResizable}
 
-◌ Raylib.InitWindow {800 600 "rayuiua"}
-◌ Raylib.SetTargetFPS {60}
+RL.InitWindow {800 600 "rayuiua"}
+RL.SetTargetFPS {60}
 
-Loop ← (
+Loop ← |1 (
   # &s "frame"
-  under(Raylib.BeginDrawing)(
-    ◌ Raylib.ClearBackground {Raylib.Color.Green}
-    ◌ Raylib.DrawRectangle {80 80 160 80 Raylib.Color.White}
-    ◌ Raylib.DrawText {"green" 124 110 20 Raylib.Color.Black}
-  )
+  ◌
+  ⍜(RL.BeginDrawing)(
+    RL.ClearBackground {RL.Color.Green}
+    RL.DrawRectangle {80 80 160 80 RL.Color.White}
+    RL.DrawText {"green" 124 110 20 RL.Color.Black}
+    []
+  ) {}
+  ◌
+  ◌
+  0
 )
 
-⍢(Loop|¬Raylib.WindowShouldClose {}) 0
+ShouldContinue ← |1 (
+  ¬ RL.WindowShouldClose {}
+  ⊙◌
+)
 
-◌ Raylib.CloseWindow {}
+⍢(Loop|ShouldContinue) 0
+
+RL.CloseWindow {}

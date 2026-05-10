@@ -270,20 +270,25 @@ BuildFunctionSig ← |1 (
   $"_ _ _"
 )
 BeginPairName ← |1 $"End_" ↘5 GetName
-BuildEndSigFromBegin ← |1 $"\"void\" \"_\" " BeginPairName
 BeginFunction ← |1 >0 /+ Starts "Begin" GetName
+EndFunction   ← |1 >0 /+ Starts "End" GetName
 
-BuildFunction ← |1 $"_ ← Lib {_}" ⊃(BindingName|BuildFunctionSig)
-BuildBeginObverse ← |1 (
-  $"_ ← ⌅(Lib {_}|Lib {_})" ⊃(BindingName|BuildFunctionSig|BuildEndSigFromBegin)
-)
+BuildReturnFunction ← |1 $"_ ← Lib {_}" ⊃(BindingName|BuildFunctionSig)
+BuildVoidFunction   ← |1 $"_ ← |1.0 (◌ (Lib {_}))" ⊃(BindingName|BuildFunctionSig)
+BuildFunction       ← |1 ⨬(BuildReturnFunction|BuildVoidFunction) ⊸(≍"void" GetReturnType)
 BuildEndUn ← |1 $"_ ← °_" ⊃(DigitNames BeginPairName|BindingName)
+BuildEndSigFromBegin ← |1 $"\"void\" \"_\" " BeginPairName
+BuildBeginObverse ← |1 (
+  $"_ ← ⌅(Lib {_}||1 (⊙(Lib {_})))" ⊃(BindingName|BuildFunctionSig|BuildEndSigFromBegin)
+)
 BuildBeginEndPair ← |1 $"_\n_" ⊃(BuildBeginObverse|BuildEndUn)
 
 RenderFunctions ← |1 (
   Fns ← GetFunctions
   BeginFns ← ▽⊃(≡◇BeginFunction|∘) Fns
-  $"_\n_" ⊃(JoinLines ⍚BuildFunction Fns|JoinLines ⍚BuildBeginEndPair BeginFns)
+  PairedFunction ← |1 >0 /+ ⊃[BeginFunction|EndFunction]
+  RegularFns ← ▽⊃(¬≡◇PairedFunction|∘) Fns
+  $"_\n_" ⊃(JoinLines ⍚BuildFunction RegularFns|JoinLines ⍚BuildBeginEndPair BeginFns)
 )
 RenderParts     ← ⊃(⋅StaticPrelude|RenderTypePrelude|RenderDefines|RenderEnums|RenderFunctions)
 
