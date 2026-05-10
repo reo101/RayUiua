@@ -281,17 +281,17 @@ EndFunction   ← |1 >0 /+ Starts "End" GetName
 
 BuildReturnStack     ← |1 $"_ ← _ (Lib {_}) _" ⊃(BindingName|BindingArity|BuildFunctionSig|ArgumentPack)
 BuildVoidStack       ← |1 $"_ ← _ ◌ ((Lib {_}) _)" ⊃(BindingName|VoidSignature|BuildFunctionSig|ArgumentPack)
-BuildReturnBoxed     ← |1 $"_ ← Lib {_}" ⊃(BindingName|BuildFunctionSig)
-BuildVoidBoxed       ← |1 $"_ ← |1.0 (◌ (Lib {_}))" ⊃(BindingName|BuildFunctionSig)
+BuildReturnBoxed     ← |1 $"_ ← |0.1 ((Lib {_}) {})" ⊃(BindingName|BuildFunctionSig)
+BuildVoidBoxed       ← |1 $"_ ← |0.0 (◌ ((Lib {_}) {}))" ⊃(BindingName|BuildFunctionSig)
 BuildReturnFunction  ← |1 ⨬(BuildReturnStack|BuildReturnBoxed) ⊸NoBindingArgs
 BuildVoidFunction    ← |1 ⨬(BuildVoidStack|BuildVoidBoxed) ⊸NoBindingArgs
 BuildFunction        ← |1 ⨬(BuildReturnFunction|BuildVoidFunction) ⊸(≍"void" GetReturnType)
-BuildEndUn           ← |1 $"_ ← °_" ⊃(DigitNames BeginPairName|BindingName)
 BuildEndSigFromBegin ← |1 $"\"void\" \"_\" " BeginPairName
+BuildEndFunction     ← |1 $"_ ← |0.0 (◌ ((Lib {_}) {}))" ⊃(DigitNames BeginPairName|BuildEndSigFromBegin)
 BuildBeginObverse ← |1 (
-  $"_ ← _ ⌅((Lib {_}) _||1 (⊙(Lib {_}) {}))" ⊃(BindingName|BindingArity|BuildFunctionSig|ArgumentPack|BuildEndSigFromBegin)
+  $"_ ← _ ⌅(◌ ((Lib {_}) _)|◌ ((Lib {_}) _)|◌ ((Lib {_}) {}))" ⊃(BindingName|VoidSignature|BuildFunctionSig|ArgumentPack|BuildFunctionSig|ArgumentPack|BuildEndSigFromBegin)
 )
-BuildBeginEndPair ← |1 $"_\n_" ⊃(BuildBeginObverse|BuildEndUn)
+BuildBeginEndPair ← |1 $"_\n_" ⊃(BuildBeginObverse|BuildEndFunction)
 
 RenderFunctions ← |1 (
   Fns ← GetFunctions
