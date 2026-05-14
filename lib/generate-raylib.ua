@@ -279,19 +279,22 @@ BeginPairName ← |1 $"End_" ↘5 GetName
 BeginFunction ← |1 >0 /+ Starts "Begin" GetName
 EndFunction   ← |1 >0 /+ Starts "End" GetName
 
-BuildReturnStack     ← |1 $"_ ← _ (Lib {_}) _" ⊃(BindingName|BindingArity|BuildFunctionSig|ArgumentPack)
-BuildVoidStack       ← |1 $"_ ← _ ◌ ((Lib {_}) _)" ⊃(BindingName|VoidSignature|BuildFunctionSig|ArgumentPack)
-BuildReturnBoxed     ← |1 $"_ ← |0.1 ((Lib {_}) {})" ⊃(BindingName|BuildFunctionSig)
-BuildVoidBoxed       ← |1 $"_ ← |0.0 (◌ ((Lib {_}) {}))" ⊃(BindingName|BuildFunctionSig)
+BuildRawFunction     ← |1 $"  _ ← Lib {_}" ⊃(BindingName|BuildFunctionSig)
+BuildReturnStack     ← |1 $"_ ← _ Raw._ _" ⊃(BindingName|BindingArity|BindingName|ArgumentPack)
+BuildVoidStack       ← |1 $"_ ← _ ◌ (Raw._ _)" ⊃(BindingName|VoidSignature|BindingName|ArgumentPack)
+BuildReturnBoxed     ← |1 $"_ ← |0.1 (Raw._ {})" ⊃(BindingName|BindingName)
+BuildVoidBoxed       ← |1 $"_ ← |0.0 (◌ (Raw._ {}))" ⊃(BindingName|BindingName)
 BuildReturnFunction  ← |1 ⨬(BuildReturnStack|BuildReturnBoxed) ⊸NoBindingArgs
 BuildVoidFunction    ← |1 ⨬(BuildVoidStack|BuildVoidBoxed) ⊸NoBindingArgs
 BuildFunction        ← |1 ⨬(BuildReturnFunction|BuildVoidFunction) ⊸(≍"void" GetReturnType)
 BuildEndSigFromBegin ← |1 $"\"void\" \"_\" " BeginPairName
-BuildEndFunction     ← |1 $"_ ← |0.0 (◌ ((Lib {_}) {}))" ⊃(DigitNames BeginPairName|BuildEndSigFromBegin)
+BuildEndFunction     ← |1 $"_ ← |0.0 (◌ (Raw._ {}))" ⊃(DigitNames BeginPairName|DigitNames BeginPairName)
 BuildBeginObverse ← |1 (
-  $"_ ← _ ⌅(◌ ((Lib {_}) _)|◌ ((Lib {_}) _)|◌ ((Lib {_}) {}))" ⊃(BindingName|VoidSignature|BuildFunctionSig|ArgumentPack|BuildFunctionSig|ArgumentPack|BuildEndSigFromBegin)
+  $"_ ← _ ⌅(◌ (Raw._ _)|◌ (Raw._ {}))" ⊃(BindingName|VoidSignature|BindingName|ArgumentPack|DigitNames BeginPairName)
 )
 BuildBeginEndPair ← |1 $"_\n_" ⊃(BuildBeginObverse|BuildEndFunction)
+
+RenderRawFunctions ← |1 $"┌─╴Raw\n_\n└─╴" JoinLines ⍚BuildRawFunction GetFunctions
 
 RenderFunctions ← |1 (
   Fns ← GetFunctions
@@ -300,9 +303,9 @@ RenderFunctions ← |1 (
   RegularFns ← ▽⊃(¬≡◇PairedFunction|∘) Fns
   $"_\n_" ⊃(JoinLines ⍚BuildFunction RegularFns|JoinLines ⍚BuildBeginEndPair BeginFns)
 )
-RenderParts ← ⊃(⋅StaticPrelude|RenderTypePrelude|RenderDefines|RenderEnums|RenderFunctions)
+RenderParts ← ⊃(⋅StaticPrelude|RenderTypePrelude|RenderDefines|RenderEnums|RenderRawFunctions|RenderFunctions)
 
-GenerateBody ← |1 $"_\n\n_\n\n_\n\n_\n\n# Top-level function bindings.\n_" RenderParts
+GenerateBody ← |1 $"_\n\n_\n\n_\n\n_\n\n# Raw FFI bindings.\n_\n\n# Top-level function bindings.\n_" RenderParts
 
 GenerateSourceWithLoader ← |2 ˜$"_\n\n_" GenerateBody ⊙GeneratePrelude
 GenerateSource           ← |1 GenerateSourceWithLoader ⊙"loader"
