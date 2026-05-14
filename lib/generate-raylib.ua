@@ -4,6 +4,8 @@
 # entrypoint for file output:
 #   uiua run lib/generate-raylib-main.ua [path/to/raylib_api.json] [path/to/output.ua]
 
+CGen ~ "generate-c-functions"
+
 Digits ← "0123456789"
 
 GetName       ← °□get "name"
@@ -266,11 +268,11 @@ LookupParamType ← |1 TypeName °□get "type"
 
 BindingName     ← |1 DigitNames GetName
 BindingArgCount ← |1 ⧻ GetParams
-BindingArity    ← |1 $"|_" °⋕ BindingArgCount
-VoidSignature   ← |1 $"_.0" BindingArity
+BindingArity    ← |1 CGen.BindingArityFromCount BindingArgCount
+VoidSignature   ← |1 CGen.VoidSignatureFromCount BindingArgCount
 NoBindingArgs   ← |1 =0 BindingArgCount
 NonzeroArgPack  ← |1 $"□,_" °⋕ BindingArgCount
-ArgumentPack    ← |1 ⨬(NonzeroArgPack|⋅"{}") ⊸NoBindingArgs
+ArgumentPack    ← |1 CGen.ArgumentPackFromCount BindingArgCount
 BuildFunctionSig ← |1 (
   ⊃(TypeName GetReturnType|Quote GetName|JoinWords ⍚LookupParamType GetParams)
   $"_ _ _"
@@ -279,22 +281,22 @@ BeginPairName ← |1 $"End_" ↘5 GetName
 BeginFunction ← |1 >0 /+ Starts "Begin" GetName
 EndFunction   ← |1 >0 /+ Starts "End" GetName
 
-BuildRawFunction     ← |1 $"  _ ← Lib {_}" ⊃(BindingName|BuildFunctionSig)
-BuildReturnStack     ← |1 $"_ ← _ Raw._ _" ⊃(BindingName|BindingArity|BindingName|ArgumentPack)
-BuildVoidStack       ← |1 $"_ ← _ ◌ (Raw._ _)" ⊃(BindingName|VoidSignature|BindingName|ArgumentPack)
-BuildReturnBoxed     ← |1 $"_ ← |0.1 (Raw._ {})" ⊃(BindingName|BindingName)
-BuildVoidBoxed       ← |1 $"_ ← |0.0 (◌ (Raw._ {}))" ⊃(BindingName|BindingName)
+BuildRawFunction     ← |1 CGen.RawFunctionLine ⊃(BindingName|BuildFunctionSig)
+BuildReturnStack     ← |1 CGen.ReturnStackLine ⊃(BindingName|BindingArity|BindingName|ArgumentPack)
+BuildVoidStack       ← |1 CGen.VoidStackLine ⊃(BindingName|VoidSignature|BindingName|ArgumentPack)
+BuildReturnBoxed     ← |1 CGen.ReturnBoxedLine ⊃(BindingName|BindingName)
+BuildVoidBoxed       ← |1 CGen.VoidBoxedLine ⊃(BindingName|BindingName)
 BuildReturnFunction  ← |1 ⨬(BuildReturnStack|BuildReturnBoxed) ⊸NoBindingArgs
 BuildVoidFunction    ← |1 ⨬(BuildVoidStack|BuildVoidBoxed) ⊸NoBindingArgs
 BuildFunction        ← |1 ⨬(BuildReturnFunction|BuildVoidFunction) ⊸(≍"void" GetReturnType)
 BuildEndSigFromBegin ← |1 $"\"void\" \"_\" " BeginPairName
-BuildEndFunction     ← |1 $"_ ← |0.0 (◌ (Raw._ {}))" ⊃(DigitNames BeginPairName|DigitNames BeginPairName)
+BuildEndFunction     ← |1 CGen.EndFunctionLine ⊃(DigitNames BeginPairName|DigitNames BeginPairName)
 BuildBeginObverse ← |1 (
-  $"_ ← _ ⌅(◌ (Raw._ _)|◌ (Raw._ {}))" ⊃(BindingName|VoidSignature|BindingName|ArgumentPack|DigitNames BeginPairName)
+  CGen.BeginObverseLine ⊃(BindingName|VoidSignature|BindingName|ArgumentPack|DigitNames BeginPairName)
 )
 BuildBeginEndPair ← |1 $"_\n_" ⊃(BuildBeginObverse|BuildEndFunction)
 
-RenderRawFunctions ← |1 $"┌─╴Raw\n_\n└─╴" JoinLines ⍚BuildRawFunction GetFunctions
+RenderRawFunctions ← |1 CGen.RawFunctionBlock ⍚BuildRawFunction GetFunctions
 
 RenderFunctions ← |1 (
   Fns ← GetFunctions
