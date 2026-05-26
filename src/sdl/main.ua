@@ -1,6 +1,6 @@
 # Experimental!
 
-SDL ~ "../lib/sdl"
+SDL ~ "../../lib/sdl"
 
 ◌ SDL.Init SDL.InitVideo
 

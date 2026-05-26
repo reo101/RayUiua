@@ -1,6 +1,6 @@
 # Experimental!
 
-RL ~ "../lib/raylib"
+RL ~ "../../lib/raylib"
 
 RL.SetConfigFlags RL.ConfigFlags.FlagWindowResizable
 
