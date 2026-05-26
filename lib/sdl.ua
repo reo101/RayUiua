@@ -1,5 +1,6 @@
 # Generated from SDL3 API JSON by <lib/generate-sdl.ua>.
 # Do not edit by hand.
+# Unsupported ABI paths are intentionally omitted.
 # Experimental!
 # Type check!
 
@@ -18,9 +19,6 @@ EventWindowCloseRequested ← 528
 
 # Raw FFI bindings.
 ┌─╴Raw
-  SetAssertionHandler ← Lib {"void" "SDL_SetAssertionHandler" "int" "void*"}
-  GetDefaultAssertionHandler ← Lib {"int" "SDL_GetDefaultAssertionHandler" }
-  GetAssertionHandler ← Lib {"int" "SDL_GetAssertionHandler" "void*"}
   GetAssertionReport ← Lib {"void*" "SDL_GetAssertionReport" }
   ResetAssertionReport ← Lib {"void" "SDL_ResetAssertionReport" }
   AsyncIOFromFile ← Lib {"void*" "SDL_AsyncIOFromFile" "char*" "char*"}
@@ -53,25 +51,25 @@ EventWindowCloseRequested ← 528
   GetNumAudioDrivers ← Lib {"int" "SDL_GetNumAudioDrivers" }
   GetAudioDriver ← Lib {"char*" "SDL_GetAudioDriver" "int"}
   GetCurrentAudioDriver ← Lib {"char*" "SDL_GetCurrentAudioDriver" }
-  GetAudioPlaybackDevices ← Lib {"void*" "SDL_GetAudioPlaybackDevices" "void*"}
-  GetAudioRecordingDevices ← Lib {"void*" "SDL_GetAudioRecordingDevices" "void*"}
-  GetAudioDeviceName ← Lib {"char*" "SDL_GetAudioDeviceName" "int"}
-  GetAudioDeviceFormat ← Lib {"uchar" "SDL_GetAudioDeviceFormat" "int" "void*" "void*"}
-  GetAudioDeviceChannelMap ← Lib {"void*" "SDL_GetAudioDeviceChannelMap" "int" "void*"}
-  OpenAudioDevice ← Lib {"int" "SDL_OpenAudioDevice" "int" "void*"}
-  IsAudioDevicePhysical ← Lib {"uchar" "SDL_IsAudioDevicePhysical" "int"}
-  IsAudioDevicePlayback ← Lib {"uchar" "SDL_IsAudioDevicePlayback" "int"}
-  PauseAudioDevice ← Lib {"uchar" "SDL_PauseAudioDevice" "int"}
-  ResumeAudioDevice ← Lib {"uchar" "SDL_ResumeAudioDevice" "int"}
-  AudioDevicePaused ← Lib {"uchar" "SDL_AudioDevicePaused" "int"}
-  GetAudioDeviceGain ← Lib {"float" "SDL_GetAudioDeviceGain" "int"}
-  SetAudioDeviceGain ← Lib {"uchar" "SDL_SetAudioDeviceGain" "int" "float"}
-  CloseAudioDevice ← Lib {"void" "SDL_CloseAudioDevice" "int"}
-  BindAudioStreams ← Lib {"uchar" "SDL_BindAudioStreams" "int" "void*" "int"}
-  BindAudioStream ← Lib {"uchar" "SDL_BindAudioStream" "int" "void*"}
+  GetAudioPlaybackDevices ← Lib {"void*" "SDL_GetAudioPlaybackDevices" "int*"}
+  GetAudioRecordingDevices ← Lib {"void*" "SDL_GetAudioRecordingDevices" "int*"}
+  GetAudioDeviceName ← Lib {"char*" "SDL_GetAudioDeviceName" "uint"}
+  GetAudioDeviceFormat ← Lib {"uchar" "SDL_GetAudioDeviceFormat" "uint" "void*" "int*"}
+  GetAudioDeviceChannelMap ← Lib {"int*" "SDL_GetAudioDeviceChannelMap" "uint" "int*"}
+  OpenAudioDevice ← Lib {"uint" "SDL_OpenAudioDevice" "uint" "void*"}
+  IsAudioDevicePhysical ← Lib {"uchar" "SDL_IsAudioDevicePhysical" "uint"}
+  IsAudioDevicePlayback ← Lib {"uchar" "SDL_IsAudioDevicePlayback" "uint"}
+  PauseAudioDevice ← Lib {"uchar" "SDL_PauseAudioDevice" "uint"}
+  ResumeAudioDevice ← Lib {"uchar" "SDL_ResumeAudioDevice" "uint"}
+  AudioDevicePaused ← Lib {"uchar" "SDL_AudioDevicePaused" "uint"}
+  GetAudioDeviceGain ← Lib {"float" "SDL_GetAudioDeviceGain" "uint"}
+  SetAudioDeviceGain ← Lib {"uchar" "SDL_SetAudioDeviceGain" "uint" "float"}
+  CloseAudioDevice ← Lib {"void" "SDL_CloseAudioDevice" "uint"}
+  BindAudioStreams ← Lib {"uchar" "SDL_BindAudioStreams" "uint" "void*" "int"}
+  BindAudioStream ← Lib {"uchar" "SDL_BindAudioStream" "uint" "void*"}
   UnbindAudioStreams ← Lib {"void" "SDL_UnbindAudioStreams" "void*" "int"}
   UnbindAudioStream ← Lib {"void" "SDL_UnbindAudioStream" "void*"}
-  GetAudioStreamDevice ← Lib {"int" "SDL_GetAudioStreamDevice" "void*"}
+  GetAudioStreamDevice ← Lib {"uint" "SDL_GetAudioStreamDevice" "void*"}
   CreateAudioStream ← Lib {"void*" "SDL_CreateAudioStream" "void*" "void*"}
   GetAudioStreamProperties ← Lib {"uint" "SDL_GetAudioStreamProperties" "void*"}
   GetAudioStreamFormat ← Lib {"uchar" "SDL_GetAudioStreamFormat" "void*" "void*" "void*"}
@@ -80,12 +78,11 @@ EventWindowCloseRequested ← 528
   SetAudioStreamFrequencyRatio ← Lib {"uchar" "SDL_SetAudioStreamFrequencyRatio" "void*" "float"}
   GetAudioStreamGain ← Lib {"float" "SDL_GetAudioStreamGain" "void*"}
   SetAudioStreamGain ← Lib {"uchar" "SDL_SetAudioStreamGain" "void*" "float"}
-  GetAudioStreamInputChannelMap ← Lib {"void*" "SDL_GetAudioStreamInputChannelMap" "void*" "void*"}
-  GetAudioStreamOutputChannelMap ← Lib {"void*" "SDL_GetAudioStreamOutputChannelMap" "void*" "void*"}
+  GetAudioStreamInputChannelMap ← Lib {"int*" "SDL_GetAudioStreamInputChannelMap" "void*" "int*"}
+  GetAudioStreamOutputChannelMap ← Lib {"int*" "SDL_GetAudioStreamOutputChannelMap" "void*" "int*"}
   SetAudioStreamInputChannelMap ← Lib {"uchar" "SDL_SetAudioStreamInputChannelMap" "void*" "void*" "int"}
   SetAudioStreamOutputChannelMap ← Lib {"uchar" "SDL_SetAudioStreamOutputChannelMap" "void*" "void*" "int"}
   PutAudioStreamData ← Lib {"uchar" "SDL_PutAudioStreamData" "void*" "void*" "int"}
-  PutAudioStreamDataNoCopy ← Lib {"uchar" "SDL_PutAudioStreamDataNoCopy" "void*" "void*" "int" "int" "void*"}
   PutAudioStreamPlanarData ← Lib {"uchar" "SDL_PutAudioStreamPlanarData" "void*" "void*" "int" "int"}
   GetAudioStreamData ← Lib {"int" "SDL_GetAudioStreamData" "void*" "void*" "int"}
   GetAudioStreamAvailable ← Lib {"int" "SDL_GetAudioStreamAvailable" "void*"}
@@ -97,31 +94,27 @@ EventWindowCloseRequested ← 528
   AudioStreamDevicePaused ← Lib {"uchar" "SDL_AudioStreamDevicePaused" "void*"}
   LockAudioStream ← Lib {"uchar" "SDL_LockAudioStream" "void*"}
   UnlockAudioStream ← Lib {"uchar" "SDL_UnlockAudioStream" "void*"}
-  SetAudioStreamGetCallback ← Lib {"uchar" "SDL_SetAudioStreamGetCallback" "void*" "int" "void*"}
-  SetAudioStreamPutCallback ← Lib {"uchar" "SDL_SetAudioStreamPutCallback" "void*" "int" "void*"}
   DestroyAudioStream ← Lib {"void" "SDL_DestroyAudioStream" "void*"}
-  OpenAudioDeviceStream ← Lib {"void*" "SDL_OpenAudioDeviceStream" "int" "void*" "int" "void*"}
-  SetAudioPostmixCallback ← Lib {"uchar" "SDL_SetAudioPostmixCallback" "int" "int" "void*"}
-  LoadWAVIO ← Lib {"uchar" "SDL_LoadWAV_IO" "void*" "uchar" "void*" "void*" "void*"}
-  LoadWAV ← Lib {"uchar" "SDL_LoadWAV" "char*" "void*" "void*" "void*"}
-  MixAudio ← Lib {"uchar" "SDL_MixAudio" "void*" "void*" "int" "uint" "float"}
-  ConvertAudioSamples ← Lib {"uchar" "SDL_ConvertAudioSamples" "void*" "void*" "int" "void*" "void*" "void*"}
+  LoadWAVIO ← Lib {"uchar" "SDL_LoadWAV_IO" "void*" "uchar" "void*" "void*" "uint*"}
+  LoadWAV ← Lib {"uchar" "SDL_LoadWAV" "char*" "void*" "void*" "uint*"}
+  MixAudio ← Lib {"uchar" "SDL_MixAudio" "uchar*" "uchar*" "int" "uint" "float"}
+  ConvertAudioSamples ← Lib {"uchar" "SDL_ConvertAudioSamples" "void*" "uchar*" "int" "void*" "void*" "int*"}
   GetAudioFormatName ← Lib {"char*" "SDL_GetAudioFormatName" "int"}
   GetSilenceValueForFormat ← Lib {"int" "SDL_GetSilenceValueForFormat" "int"}
-  ComposeCustomBlendMode ← Lib {"int" "SDL_ComposeCustomBlendMode" "int" "int" "int" "int" "int" "int"}
+  ComposeCustomBlendMode ← Lib {"uint" "SDL_ComposeCustomBlendMode" "int" "int" "int" "int" "int" "int"}
   GetNumCameraDrivers ← Lib {"int" "SDL_GetNumCameraDrivers" }
   GetCameraDriver ← Lib {"char*" "SDL_GetCameraDriver" "int"}
   GetCurrentCameraDriver ← Lib {"char*" "SDL_GetCurrentCameraDriver" }
-  GetCameras ← Lib {"void*" "SDL_GetCameras" "void*"}
-  GetCameraSupportedFormats ← Lib {"void*" "SDL_GetCameraSupportedFormats" "int" "void*"}
-  GetCameraName ← Lib {"char*" "SDL_GetCameraName" "int"}
-  GetCameraPosition ← Lib {"int" "SDL_GetCameraPosition" "int"}
-  OpenCamera ← Lib {"void*" "SDL_OpenCamera" "int" "void*"}
+  GetCameras ← Lib {"void*" "SDL_GetCameras" "int*"}
+  GetCameraSupportedFormats ← Lib {"void*" "SDL_GetCameraSupportedFormats" "uint" "int*"}
+  GetCameraName ← Lib {"char*" "SDL_GetCameraName" "uint"}
+  GetCameraPosition ← Lib {"int" "SDL_GetCameraPosition" "uint"}
+  OpenCamera ← Lib {"void*" "SDL_OpenCamera" "uint" "void*"}
   GetCameraPermissionState ← Lib {"int" "SDL_GetCameraPermissionState" "void*"}
-  GetCameraID ← Lib {"int" "SDL_GetCameraID" "void*"}
+  GetCameraID ← Lib {"uint" "SDL_GetCameraID" "void*"}
   GetCameraProperties ← Lib {"uint" "SDL_GetCameraProperties" "void*"}
   GetCameraFormat ← Lib {"uchar" "SDL_GetCameraFormat" "void*" "void*"}
-  AcquireCameraFrame ← Lib {"void*" "SDL_AcquireCameraFrame" "void*" "void*"}
+  AcquireCameraFrame ← Lib {"void*" "SDL_AcquireCameraFrame" "void*" "ulong*"}
   ReleaseCameraFrame ← Lib {"void" "SDL_ReleaseCameraFrame" "void*" "void*"}
   CloseCamera ← Lib {"void" "SDL_CloseCamera" "void*"}
   SetClipboardText ← Lib {"uchar" "SDL_SetClipboardText" "char*"}
@@ -130,7 +123,6 @@ EventWindowCloseRequested ← 528
   SetPrimarySelectionText ← Lib {"uchar" "SDL_SetPrimarySelectionText" "char*"}
   GetPrimarySelectionText ← Lib {"char*" "SDL_GetPrimarySelectionText" }
   HasPrimarySelectionText ← Lib {"uchar" "SDL_HasPrimarySelectionText" }
-  SetClipboardData ← Lib {"uchar" "SDL_SetClipboardData" "int" "int" "void*" "void*" "int"}
   ClearClipboardData ← Lib {"uchar" "SDL_ClearClipboardData" }
   GetClipboardData ← Lib {"void*" "SDL_GetClipboardData" "char*" "void*"}
   HasClipboardData ← Lib {"uchar" "SDL_HasClipboardData" "char*"}
@@ -152,12 +144,8 @@ EventWindowCloseRequested ← 528
   HasLSX ← Lib {"uchar" "SDL_HasLSX" }
   HasLASX ← Lib {"uchar" "SDL_HasLASX" }
   GetSystemRAM ← Lib {"int" "SDL_GetSystemRAM" }
-  GetSIMDAlignment ← Lib {"int" "SDL_GetSIMDAlignment" }
+  GetSIMDAlignment ← Lib {"ulong" "SDL_GetSIMDAlignment" }
   GetSystemPageSize ← Lib {"int" "SDL_GetSystemPageSize" }
-  ShowOpenFileDialog ← Lib {"void" "SDL_ShowOpenFileDialog" "int" "void*" "void*" "void*" "int" "char*" "uchar"}
-  ShowSaveFileDialog ← Lib {"void" "SDL_ShowSaveFileDialog" "int" "void*" "void*" "void*" "int" "char*"}
-  ShowOpenFolderDialog ← Lib {"void" "SDL_ShowOpenFolderDialog" "int" "void*" "void*" "char*" "uchar"}
-  ShowFileDialogWithProperties ← Lib {"void" "SDL_ShowFileDialogWithProperties" "int" "int" "void*" "uint"}
   OutOfMemory ← Lib {"uchar" "SDL_OutOfMemory" }
   GetError ← Lib {"char*" "SDL_GetError" }
   ClearError ← Lib {"uchar" "SDL_ClearError" }
@@ -171,11 +159,7 @@ EventWindowCloseRequested ← 528
   WaitEvent ← Lib {"uchar" "SDL_WaitEvent" "void*"}
   WaitEventTimeout ← Lib {"uchar" "SDL_WaitEventTimeout" "void*" "int"}
   PushEvent ← Lib {"uchar" "SDL_PushEvent" "void*"}
-  SetEventFilter ← Lib {"void" "SDL_SetEventFilter" "int" "void*"}
   GetEventFilter ← Lib {"uchar" "SDL_GetEventFilter" "void*" "void*"}
-  AddEventWatch ← Lib {"uchar" "SDL_AddEventWatch" "int" "void*"}
-  RemoveEventWatch ← Lib {"void" "SDL_RemoveEventWatch" "int" "void*"}
-  FilterEvents ← Lib {"void" "SDL_FilterEvents" "int" "void*"}
   SetEventEnabled ← Lib {"void" "SDL_SetEventEnabled" "uint" "uchar"}
   EventEnabled ← Lib {"uchar" "SDL_EventEnabled" "uint"}
   RegisterEvents ← Lib {"uint" "SDL_RegisterEvents" "int"}
@@ -185,39 +169,38 @@ EventWindowCloseRequested ← 528
   GetPrefPath ← Lib {"char*" "SDL_GetPrefPath" "char*" "char*"}
   GetUserFolder ← Lib {"char*" "SDL_GetUserFolder" "int"}
   CreateDirectory ← Lib {"uchar" "SDL_CreateDirectory" "char*"}
-  EnumerateDirectory ← Lib {"uchar" "SDL_EnumerateDirectory" "char*" "int" "void*"}
   RemovePath ← Lib {"uchar" "SDL_RemovePath" "char*"}
   RenamePath ← Lib {"uchar" "SDL_RenamePath" "char*" "char*"}
   CopyFile ← Lib {"uchar" "SDL_CopyFile" "char*" "char*"}
   GetPathInfo ← Lib {"uchar" "SDL_GetPathInfo" "char*" "void*"}
-  GlobDirectory ← Lib {"void*" "SDL_GlobDirectory" "char*" "char*" "int" "void*"}
+  GlobDirectory ← Lib {"void*" "SDL_GlobDirectory" "char*" "char*" "uint" "int*"}
   GetCurrentDirectory ← Lib {"char*" "SDL_GetCurrentDirectory" }
   AddGamepadMapping ← Lib {"int" "SDL_AddGamepadMapping" "char*"}
   AddGamepadMappingsFromIO ← Lib {"int" "SDL_AddGamepadMappingsFromIO" "void*" "uchar"}
   AddGamepadMappingsFromFile ← Lib {"int" "SDL_AddGamepadMappingsFromFile" "char*"}
   ReloadGamepadMappings ← Lib {"uchar" "SDL_ReloadGamepadMappings" }
-  GetGamepadMappings ← Lib {"void*" "SDL_GetGamepadMappings" "void*"}
-  GetGamepadMappingForGUID ← Lib {"char*" "SDL_GetGamepadMappingForGUID" "int"}
+  GetGamepadMappings ← Lib {"void*" "SDL_GetGamepadMappings" "int*"}
+  GetGamepadMappingForGUID ← Lib {"char*" "SDL_GetGamepadMappingForGUID" "uchar[16]"}
   GetGamepadMapping ← Lib {"char*" "SDL_GetGamepadMapping" "void*"}
-  SetGamepadMapping ← Lib {"uchar" "SDL_SetGamepadMapping" "int" "char*"}
+  SetGamepadMapping ← Lib {"uchar" "SDL_SetGamepadMapping" "uint" "char*"}
   HasGamepad ← Lib {"uchar" "SDL_HasGamepad" }
-  GetGamepads ← Lib {"void*" "SDL_GetGamepads" "void*"}
-  IsGamepad ← Lib {"uchar" "SDL_IsGamepad" "int"}
-  GetGamepadNameForID ← Lib {"char*" "SDL_GetGamepadNameForID" "int"}
-  GetGamepadPathForID ← Lib {"char*" "SDL_GetGamepadPathForID" "int"}
-  GetGamepadPlayerIndexForID ← Lib {"int" "SDL_GetGamepadPlayerIndexForID" "int"}
-  GetGamepadGUIDForID ← Lib {"int" "SDL_GetGamepadGUIDForID" "int"}
-  GetGamepadVendorForID ← Lib {"ushort" "SDL_GetGamepadVendorForID" "int"}
-  GetGamepadProductForID ← Lib {"ushort" "SDL_GetGamepadProductForID" "int"}
-  GetGamepadProductVersionForID ← Lib {"ushort" "SDL_GetGamepadProductVersionForID" "int"}
-  GetGamepadTypeForID ← Lib {"int" "SDL_GetGamepadTypeForID" "int"}
-  GetRealGamepadTypeForID ← Lib {"int" "SDL_GetRealGamepadTypeForID" "int"}
-  GetGamepadMappingForID ← Lib {"char*" "SDL_GetGamepadMappingForID" "int"}
-  OpenGamepad ← Lib {"void*" "SDL_OpenGamepad" "int"}
-  GetGamepadFromID ← Lib {"void*" "SDL_GetGamepadFromID" "int"}
+  GetGamepads ← Lib {"void*" "SDL_GetGamepads" "int*"}
+  IsGamepad ← Lib {"uchar" "SDL_IsGamepad" "uint"}
+  GetGamepadNameForID ← Lib {"char*" "SDL_GetGamepadNameForID" "uint"}
+  GetGamepadPathForID ← Lib {"char*" "SDL_GetGamepadPathForID" "uint"}
+  GetGamepadPlayerIndexForID ← Lib {"int" "SDL_GetGamepadPlayerIndexForID" "uint"}
+  GetGamepadGUIDForID ← Lib {"uchar[16]" "SDL_GetGamepadGUIDForID" "uint"}
+  GetGamepadVendorForID ← Lib {"ushort" "SDL_GetGamepadVendorForID" "uint"}
+  GetGamepadProductForID ← Lib {"ushort" "SDL_GetGamepadProductForID" "uint"}
+  GetGamepadProductVersionForID ← Lib {"ushort" "SDL_GetGamepadProductVersionForID" "uint"}
+  GetGamepadTypeForID ← Lib {"int" "SDL_GetGamepadTypeForID" "uint"}
+  GetRealGamepadTypeForID ← Lib {"int" "SDL_GetRealGamepadTypeForID" "uint"}
+  GetGamepadMappingForID ← Lib {"char*" "SDL_GetGamepadMappingForID" "uint"}
+  OpenGamepad ← Lib {"void*" "SDL_OpenGamepad" "uint"}
+  GetGamepadFromID ← Lib {"void*" "SDL_GetGamepadFromID" "uint"}
   GetGamepadFromPlayerIndex ← Lib {"void*" "SDL_GetGamepadFromPlayerIndex" "int"}
   GetGamepadProperties ← Lib {"uint" "SDL_GetGamepadProperties" "void*"}
-  GetGamepadID ← Lib {"int" "SDL_GetGamepadID" "void*"}
+  GetGamepadID ← Lib {"uint" "SDL_GetGamepadID" "void*"}
   GetGamepadName ← Lib {"char*" "SDL_GetGamepadName" "void*"}
   GetGamepadPath ← Lib {"char*" "SDL_GetGamepadPath" "void*"}
   GetGamepadType ← Lib {"int" "SDL_GetGamepadType" "void*"}
@@ -231,12 +214,12 @@ EventWindowCloseRequested ← 528
   GetGamepadSerial ← Lib {"char*" "SDL_GetGamepadSerial" "void*"}
   GetGamepadSteamHandle ← Lib {"ulong" "SDL_GetGamepadSteamHandle" "void*"}
   GetGamepadConnectionState ← Lib {"int" "SDL_GetGamepadConnectionState" "void*"}
-  GetGamepadPowerInfo ← Lib {"int" "SDL_GetGamepadPowerInfo" "void*" "void*"}
+  GetGamepadPowerInfo ← Lib {"int" "SDL_GetGamepadPowerInfo" "void*" "int*"}
   GamepadConnected ← Lib {"uchar" "SDL_GamepadConnected" "void*"}
   GetGamepadJoystick ← Lib {"void*" "SDL_GetGamepadJoystick" "void*"}
   SetGamepadEventsEnabled ← Lib {"void" "SDL_SetGamepadEventsEnabled" "uchar"}
   GamepadEventsEnabled ← Lib {"uchar" "SDL_GamepadEventsEnabled" }
-  GetGamepadBindings ← Lib {"void*" "SDL_GetGamepadBindings" "void*" "void*"}
+  GetGamepadBindings ← Lib {"void*" "SDL_GetGamepadBindings" "void*" "int*"}
   UpdateGamepads ← Lib {"void" "SDL_UpdateGamepads" }
   GetGamepadTypeFromString ← Lib {"int" "SDL_GetGamepadTypeFromString" "char*"}
   GetGamepadStringForType ← Lib {"char*" "SDL_GetGamepadStringForType" "int"}
@@ -252,12 +235,12 @@ EventWindowCloseRequested ← 528
   GetGamepadButtonLabel ← Lib {"int" "SDL_GetGamepadButtonLabel" "void*" "int"}
   GetNumGamepadTouchpads ← Lib {"int" "SDL_GetNumGamepadTouchpads" "void*"}
   GetNumGamepadTouchpadFingers ← Lib {"int" "SDL_GetNumGamepadTouchpadFingers" "void*" "int"}
-  GetGamepadTouchpadFinger ← Lib {"uchar" "SDL_GetGamepadTouchpadFinger" "void*" "int" "int" "void*" "void*" "void*" "void*"}
+  GetGamepadTouchpadFinger ← Lib {"uchar" "SDL_GetGamepadTouchpadFinger" "void*" "int" "int" "void*" "float*" "float*" "float*"}
   GamepadHasSensor ← Lib {"uchar" "SDL_GamepadHasSensor" "void*" "int"}
   SetGamepadSensorEnabled ← Lib {"uchar" "SDL_SetGamepadSensorEnabled" "void*" "int" "uchar"}
   GamepadSensorEnabled ← Lib {"uchar" "SDL_GamepadSensorEnabled" "void*" "int"}
   GetGamepadSensorDataRate ← Lib {"float" "SDL_GetGamepadSensorDataRate" "void*" "int"}
-  GetGamepadSensorData ← Lib {"uchar" "SDL_GetGamepadSensorData" "void*" "int" "void*" "int"}
+  GetGamepadSensorData ← Lib {"uchar" "SDL_GetGamepadSensorData" "void*" "int" "float*" "int"}
   RumbleGamepad ← Lib {"uchar" "SDL_RumbleGamepad" "void*" "ushort" "ushort" "uint"}
   RumbleGamepadTriggers ← Lib {"uchar" "SDL_RumbleGamepadTriggers" "void*" "ushort" "ushort" "uint"}
   SetGamepadLED ← Lib {"uchar" "SDL_SetGamepadLED" "void*" "uchar" "uchar" "uchar"}
@@ -265,15 +248,15 @@ EventWindowCloseRequested ← 528
   CloseGamepad ← Lib {"void" "SDL_CloseGamepad" "void*"}
   GetGamepadAppleSFSymbolsNameForButton ← Lib {"char*" "SDL_GetGamepadAppleSFSymbolsNameForButton" "void*" "int"}
   GetGamepadAppleSFSymbolsNameForAxis ← Lib {"char*" "SDL_GetGamepadAppleSFSymbolsNameForAxis" "void*" "int"}
-  GPUSupportsShaderFormats ← Lib {"uchar" "SDL_GPUSupportsShaderFormats" "int" "char*"}
+  GPUSupportsShaderFormats ← Lib {"uchar" "SDL_GPUSupportsShaderFormats" "uint" "char*"}
   GPUSupportsProperties ← Lib {"uchar" "SDL_GPUSupportsProperties" "uint"}
-  CreateGPUDevice ← Lib {"void*" "SDL_CreateGPUDevice" "int" "uchar" "char*"}
+  CreateGPUDevice ← Lib {"void*" "SDL_CreateGPUDevice" "uint" "uchar" "char*"}
   CreateGPUDeviceWithProperties ← Lib {"void*" "SDL_CreateGPUDeviceWithProperties" "uint"}
   DestroyGPUDevice ← Lib {"void" "SDL_DestroyGPUDevice" "void*"}
   GetNumGPUDrivers ← Lib {"int" "SDL_GetNumGPUDrivers" }
   GetGPUDriver ← Lib {"char*" "SDL_GetGPUDriver" "int"}
   GetGPUDeviceDriver ← Lib {"char*" "SDL_GetGPUDeviceDriver" "void*"}
-  GetGPUShaderFormats ← Lib {"int" "SDL_GetGPUShaderFormats" "void*"}
+  GetGPUShaderFormats ← Lib {"uint" "SDL_GetGPUShaderFormats" "void*"}
   GetGPUDeviceProperties ← Lib {"uint" "SDL_GetGPUDeviceProperties" "void*"}
   CreateGPUComputePipeline ← Lib {"void*" "SDL_CreateGPUComputePipeline" "void*" "void*"}
   CreateGPUGraphicsPipeline ← Lib {"void*" "SDL_CreateGPUGraphicsPipeline" "void*" "void*"}
@@ -302,7 +285,7 @@ EventWindowCloseRequested ← 528
   BindGPUGraphicsPipeline ← Lib {"void" "SDL_BindGPUGraphicsPipeline" "void*" "void*"}
   SetGPUViewport ← Lib {"void" "SDL_SetGPUViewport" "void*" "void*"}
   SetGPUScissor ← Lib {"void" "SDL_SetGPUScissor" "void*" "void*"}
-  SetGPUBlendConstants ← Lib {"void" "SDL_SetGPUBlendConstants" "void*" "int"}
+  SetGPUBlendConstants ← Lib {"void" "SDL_SetGPUBlendConstants" "void*" "float[4]"}
   SetGPUStencilReference ← Lib {"void" "SDL_SetGPUStencilReference" "void*" "uchar"}
   BindGPUVertexBuffers ← Lib {"void" "SDL_BindGPUVertexBuffers" "void*" "uint" "void*" "uint"}
   BindGPUIndexBuffer ← Lib {"void" "SDL_BindGPUIndexBuffer" "void*" "void*" "int"}
@@ -344,9 +327,9 @@ EventWindowCloseRequested ← 528
   SetGPUSwapchainParameters ← Lib {"uchar" "SDL_SetGPUSwapchainParameters" "void*" "void*" "int" "int"}
   SetGPUAllowedFramesInFlight ← Lib {"uchar" "SDL_SetGPUAllowedFramesInFlight" "void*" "uint"}
   GetGPUSwapchainTextureFormat ← Lib {"int" "SDL_GetGPUSwapchainTextureFormat" "void*" "void*"}
-  AcquireGPUSwapchainTexture ← Lib {"uchar" "SDL_AcquireGPUSwapchainTexture" "void*" "void*" "void*" "void*" "void*"}
+  AcquireGPUSwapchainTexture ← Lib {"uchar" "SDL_AcquireGPUSwapchainTexture" "void*" "void*" "void*" "uint*" "uint*"}
   WaitForGPUSwapchain ← Lib {"uchar" "SDL_WaitForGPUSwapchain" "void*" "void*"}
-  WaitAndAcquireGPUSwapchainTexture ← Lib {"uchar" "SDL_WaitAndAcquireGPUSwapchainTexture" "void*" "void*" "void*" "void*" "void*"}
+  WaitAndAcquireGPUSwapchainTexture ← Lib {"uchar" "SDL_WaitAndAcquireGPUSwapchainTexture" "void*" "void*" "void*" "uint*" "uint*"}
   SubmitGPUCommandBuffer ← Lib {"uchar" "SDL_SubmitGPUCommandBuffer" "void*"}
   SubmitGPUCommandBufferAndAcquireFence ← Lib {"void*" "SDL_SubmitGPUCommandBufferAndAcquireFence" "void*"}
   CancelGPUCommandBuffer ← Lib {"uchar" "SDL_CancelGPUCommandBuffer" "void*"}
@@ -355,20 +338,20 @@ EventWindowCloseRequested ← 528
   QueryGPUFence ← Lib {"uchar" "SDL_QueryGPUFence" "void*" "void*"}
   ReleaseGPUFence ← Lib {"void" "SDL_ReleaseGPUFence" "void*" "void*"}
   GPUTextureFormatTexelBlockSize ← Lib {"uint" "SDL_GPUTextureFormatTexelBlockSize" "int"}
-  GPUTextureSupportsFormat ← Lib {"uchar" "SDL_GPUTextureSupportsFormat" "void*" "int" "int" "int"}
+  GPUTextureSupportsFormat ← Lib {"uchar" "SDL_GPUTextureSupportsFormat" "void*" "int" "int" "uint"}
   GPUTextureSupportsSampleCount ← Lib {"uchar" "SDL_GPUTextureSupportsSampleCount" "void*" "int" "int"}
   CalculateGPUTextureFormatSize ← Lib {"uint" "SDL_CalculateGPUTextureFormatSize" "int" "uint" "uint" "uint"}
-  GetPixelFormatFromGPUTextureFormat ← Lib {"int" "SDL_GetPixelFormatFromGPUTextureFormat" "int"}
-  GetGPUTextureFormatFromPixelFormat ← Lib {"int" "SDL_GetGPUTextureFormatFromPixelFormat" "int"}
+  GetPixelFormatFromGPUTextureFormat ← Lib {"uint" "SDL_GetPixelFormatFromGPUTextureFormat" "int"}
+  GetGPUTextureFormatFromPixelFormat ← Lib {"int" "SDL_GetGPUTextureFormatFromPixelFormat" "uint"}
   GDKSuspendGPU ← Lib {"void" "SDL_GDKSuspendGPU" "void*"}
   GDKResumeGPU ← Lib {"void" "SDL_GDKResumeGPU" "void*"}
-  GUIDToString ← Lib {"void" "SDL_GUIDToString" "int" "char*" "int"}
-  StringToGUID ← Lib {"int" "SDL_StringToGUID" "char*"}
-  GetHaptics ← Lib {"void*" "SDL_GetHaptics" "void*"}
-  GetHapticNameForID ← Lib {"char*" "SDL_GetHapticNameForID" "int"}
-  OpenHaptic ← Lib {"void*" "SDL_OpenHaptic" "int"}
-  GetHapticFromID ← Lib {"void*" "SDL_GetHapticFromID" "int"}
-  GetHapticID ← Lib {"int" "SDL_GetHapticID" "void*"}
+  GUIDToString ← Lib {"void" "SDL_GUIDToString" "uchar[16]" "char*" "int"}
+  StringToGUID ← Lib {"uchar[16]" "SDL_StringToGUID" "char*"}
+  GetHaptics ← Lib {"void*" "SDL_GetHaptics" "int*"}
+  GetHapticNameForID ← Lib {"char*" "SDL_GetHapticNameForID" "uint"}
+  OpenHaptic ← Lib {"void*" "SDL_OpenHaptic" "uint"}
+  GetHapticFromID ← Lib {"void*" "SDL_GetHapticFromID" "uint"}
+  GetHapticID ← Lib {"uint" "SDL_GetHapticID" "void*"}
   GetHapticName ← Lib {"char*" "SDL_GetHapticName" "void*"}
   IsMouseHaptic ← Lib {"uchar" "SDL_IsMouseHaptic" }
   OpenHapticFromMouse ← Lib {"void*" "SDL_OpenHapticFromMouse" }
@@ -400,21 +383,18 @@ EventWindowCloseRequested ← 528
   ResetHint ← Lib {"uchar" "SDL_ResetHint" "char*"}
   ResetHints ← Lib {"void" "SDL_ResetHints" }
   GetHintBoolean ← Lib {"void*" "SDL_GetHintBoolean" "char*" "uchar"}
-  AddHintCallback ← Lib {"uchar" "SDL_AddHintCallback" "char*" "int" "void*"}
-  RemoveHintCallback ← Lib {"void" "SDL_RemoveHintCallback" "char*" "int" "void*"}
   Init ← Lib {"uchar" "SDL_Init" "uint"}
   InitSubSystem ← Lib {"uchar" "SDL_InitSubSystem" "uint"}
   QuitSubSystem ← Lib {"void" "SDL_QuitSubSystem" "uint"}
   WasInit ← Lib {"uint" "SDL_WasInit" "uint"}
   Quit ← Lib {"void" "SDL_Quit" }
   IsMainThread ← Lib {"uchar" "SDL_IsMainThread" }
-  RunOnMainThread ← Lib {"uchar" "SDL_RunOnMainThread" "int" "void*" "uchar"}
   SetAppMetadata ← Lib {"uchar" "SDL_SetAppMetadata" "char*" "char*" "char*"}
   SetAppMetadataProperty ← Lib {"uchar" "SDL_SetAppMetadataProperty" "char*" "char*"}
   GetAppMetadataProperty ← Lib {"char*" "SDL_GetAppMetadataProperty" "char*"}
   IOFromFile ← Lib {"void*" "SDL_IOFromFile" "char*" "char*"}
-  IOFromMem ← Lib {"void*" "SDL_IOFromMem" "void*" "int"}
-  IOFromConstMem ← Lib {"void*" "SDL_IOFromConstMem" "void*" "int"}
+  IOFromMem ← Lib {"void*" "SDL_IOFromMem" "void*" "ulong"}
+  IOFromConstMem ← Lib {"void*" "SDL_IOFromConstMem" "void*" "ulong"}
   IOFromDynamicMem ← Lib {"void*" "SDL_IOFromDynamicMem" }
   OpenIO ← Lib {"void*" "SDL_OpenIO" "void*" "void*"}
   CloseIO ← Lib {"uchar" "SDL_CloseIO" "void*"}
@@ -423,27 +403,27 @@ EventWindowCloseRequested ← 528
   GetIOSize ← Lib {"long long" "SDL_GetIOSize" "void*"}
   SeekIO ← Lib {"long long" "SDL_SeekIO" "void*" "long long" "int"}
   TellIO ← Lib {"long long" "SDL_TellIO" "void*"}
-  ReadIO ← Lib {"int" "SDL_ReadIO" "void*" "void*" "int"}
-  WriteIO ← Lib {"int" "SDL_WriteIO" "void*" "void*" "int"}
+  ReadIO ← Lib {"ulong" "SDL_ReadIO" "void*" "void*" "ulong"}
+  WriteIO ← Lib {"ulong" "SDL_WriteIO" "void*" "void*" "ulong"}
   FlushIO ← Lib {"uchar" "SDL_FlushIO" "void*"}
   LoadFileIO ← Lib {"void*" "SDL_LoadFile_IO" "void*" "void*" "uchar"}
   LoadFile ← Lib {"void*" "SDL_LoadFile" "char*" "void*"}
-  SaveFileIO ← Lib {"uchar" "SDL_SaveFile_IO" "void*" "void*" "int" "uchar"}
-  SaveFile ← Lib {"uchar" "SDL_SaveFile" "char*" "void*" "int"}
-  ReadUEight ← Lib {"uchar" "SDL_ReadU8" "void*" "void*"}
+  SaveFileIO ← Lib {"uchar" "SDL_SaveFile_IO" "void*" "void*" "ulong" "uchar"}
+  SaveFile ← Lib {"uchar" "SDL_SaveFile" "char*" "void*" "ulong"}
+  ReadUEight ← Lib {"uchar" "SDL_ReadU8" "void*" "uchar*"}
   ReadSEight ← Lib {"uchar" "SDL_ReadS8" "void*" "void*"}
-  ReadUOneSixLE ← Lib {"uchar" "SDL_ReadU16LE" "void*" "void*"}
-  ReadSOneSixLE ← Lib {"uchar" "SDL_ReadS16LE" "void*" "void*"}
-  ReadUOneSixBE ← Lib {"uchar" "SDL_ReadU16BE" "void*" "void*"}
-  ReadSOneSixBE ← Lib {"uchar" "SDL_ReadS16BE" "void*" "void*"}
-  ReadUThreeTwoLE ← Lib {"uchar" "SDL_ReadU32LE" "void*" "void*"}
-  ReadSThreeTwoLE ← Lib {"uchar" "SDL_ReadS32LE" "void*" "void*"}
-  ReadUThreeTwoBE ← Lib {"uchar" "SDL_ReadU32BE" "void*" "void*"}
-  ReadSThreeTwoBE ← Lib {"uchar" "SDL_ReadS32BE" "void*" "void*"}
-  ReadUSixFourLE ← Lib {"uchar" "SDL_ReadU64LE" "void*" "void*"}
-  ReadSSixFourLE ← Lib {"uchar" "SDL_ReadS64LE" "void*" "void*"}
-  ReadUSixFourBE ← Lib {"uchar" "SDL_ReadU64BE" "void*" "void*"}
-  ReadSSixFourBE ← Lib {"uchar" "SDL_ReadS64BE" "void*" "void*"}
+  ReadUOneSixLE ← Lib {"uchar" "SDL_ReadU16LE" "void*" "ushort*"}
+  ReadSOneSixLE ← Lib {"uchar" "SDL_ReadS16LE" "void*" "short*"}
+  ReadUOneSixBE ← Lib {"uchar" "SDL_ReadU16BE" "void*" "ushort*"}
+  ReadSOneSixBE ← Lib {"uchar" "SDL_ReadS16BE" "void*" "short*"}
+  ReadUThreeTwoLE ← Lib {"uchar" "SDL_ReadU32LE" "void*" "uint*"}
+  ReadSThreeTwoLE ← Lib {"uchar" "SDL_ReadS32LE" "void*" "int*"}
+  ReadUThreeTwoBE ← Lib {"uchar" "SDL_ReadU32BE" "void*" "uint*"}
+  ReadSThreeTwoBE ← Lib {"uchar" "SDL_ReadS32BE" "void*" "int*"}
+  ReadUSixFourLE ← Lib {"uchar" "SDL_ReadU64LE" "void*" "ulong*"}
+  ReadSSixFourLE ← Lib {"uchar" "SDL_ReadS64LE" "void*" "long long*"}
+  ReadUSixFourBE ← Lib {"uchar" "SDL_ReadU64BE" "void*" "ulong*"}
+  ReadSSixFourBE ← Lib {"uchar" "SDL_ReadS64BE" "void*" "long long*"}
   WriteUEight ← Lib {"uchar" "SDL_WriteU8" "void*" "uchar"}
   WriteSEight ← Lib {"uchar" "SDL_WriteS8" "void*" "char"}
   WriteUOneSixLE ← Lib {"uchar" "SDL_WriteU16LE" "void*" "ushort"}
@@ -459,21 +439,21 @@ EventWindowCloseRequested ← 528
   WriteUSixFourBE ← Lib {"uchar" "SDL_WriteU64BE" "void*" "ulong"}
   WriteSSixFourBE ← Lib {"uchar" "SDL_WriteS64BE" "void*" "long long"}
   HasJoystick ← Lib {"uchar" "SDL_HasJoystick" }
-  GetJoysticks ← Lib {"void*" "SDL_GetJoysticks" "void*"}
-  GetJoystickNameForID ← Lib {"char*" "SDL_GetJoystickNameForID" "int"}
-  GetJoystickPathForID ← Lib {"char*" "SDL_GetJoystickPathForID" "int"}
-  GetJoystickPlayerIndexForID ← Lib {"int" "SDL_GetJoystickPlayerIndexForID" "int"}
-  GetJoystickGUIDForID ← Lib {"int" "SDL_GetJoystickGUIDForID" "int"}
-  GetJoystickVendorForID ← Lib {"ushort" "SDL_GetJoystickVendorForID" "int"}
-  GetJoystickProductForID ← Lib {"ushort" "SDL_GetJoystickProductForID" "int"}
-  GetJoystickProductVersionForID ← Lib {"ushort" "SDL_GetJoystickProductVersionForID" "int"}
-  GetJoystickTypeForID ← Lib {"int" "SDL_GetJoystickTypeForID" "int"}
-  OpenJoystick ← Lib {"void*" "SDL_OpenJoystick" "int"}
-  GetJoystickFromID ← Lib {"void*" "SDL_GetJoystickFromID" "int"}
+  GetJoysticks ← Lib {"void*" "SDL_GetJoysticks" "int*"}
+  GetJoystickNameForID ← Lib {"char*" "SDL_GetJoystickNameForID" "uint"}
+  GetJoystickPathForID ← Lib {"char*" "SDL_GetJoystickPathForID" "uint"}
+  GetJoystickPlayerIndexForID ← Lib {"int" "SDL_GetJoystickPlayerIndexForID" "uint"}
+  GetJoystickGUIDForID ← Lib {"uchar[16]" "SDL_GetJoystickGUIDForID" "uint"}
+  GetJoystickVendorForID ← Lib {"ushort" "SDL_GetJoystickVendorForID" "uint"}
+  GetJoystickProductForID ← Lib {"ushort" "SDL_GetJoystickProductForID" "uint"}
+  GetJoystickProductVersionForID ← Lib {"ushort" "SDL_GetJoystickProductVersionForID" "uint"}
+  GetJoystickTypeForID ← Lib {"int" "SDL_GetJoystickTypeForID" "uint"}
+  OpenJoystick ← Lib {"void*" "SDL_OpenJoystick" "uint"}
+  GetJoystickFromID ← Lib {"void*" "SDL_GetJoystickFromID" "uint"}
   GetJoystickFromPlayerIndex ← Lib {"void*" "SDL_GetJoystickFromPlayerIndex" "int"}
-  AttachVirtualJoystick ← Lib {"int" "SDL_AttachVirtualJoystick" "void*"}
-  DetachVirtualJoystick ← Lib {"uchar" "SDL_DetachVirtualJoystick" "int"}
-  IsJoystickVirtual ← Lib {"uchar" "SDL_IsJoystickVirtual" "int"}
+  AttachVirtualJoystick ← Lib {"uint" "SDL_AttachVirtualJoystick" "void*"}
+  DetachVirtualJoystick ← Lib {"uchar" "SDL_DetachVirtualJoystick" "uint"}
+  IsJoystickVirtual ← Lib {"uchar" "SDL_IsJoystickVirtual" "uint"}
   SetJoystickVirtualAxis ← Lib {"uchar" "SDL_SetJoystickVirtualAxis" "void*" "int" "short"}
   SetJoystickVirtualBall ← Lib {"uchar" "SDL_SetJoystickVirtualBall" "void*" "int" "short" "short"}
   SetJoystickVirtualButton ← Lib {"uchar" "SDL_SetJoystickVirtualButton" "void*" "int" "uchar"}
@@ -485,16 +465,16 @@ EventWindowCloseRequested ← 528
   GetJoystickPath ← Lib {"char*" "SDL_GetJoystickPath" "void*"}
   GetJoystickPlayerIndex ← Lib {"int" "SDL_GetJoystickPlayerIndex" "void*"}
   SetJoystickPlayerIndex ← Lib {"uchar" "SDL_SetJoystickPlayerIndex" "void*" "int"}
-  GetJoystickGUID ← Lib {"int" "SDL_GetJoystickGUID" "void*"}
+  GetJoystickGUID ← Lib {"uchar[16]" "SDL_GetJoystickGUID" "void*"}
   GetJoystickVendor ← Lib {"ushort" "SDL_GetJoystickVendor" "void*"}
   GetJoystickProduct ← Lib {"ushort" "SDL_GetJoystickProduct" "void*"}
   GetJoystickProductVersion ← Lib {"ushort" "SDL_GetJoystickProductVersion" "void*"}
   GetJoystickFirmwareVersion ← Lib {"ushort" "SDL_GetJoystickFirmwareVersion" "void*"}
   GetJoystickSerial ← Lib {"char*" "SDL_GetJoystickSerial" "void*"}
   GetJoystickType ← Lib {"int" "SDL_GetJoystickType" "void*"}
-  GetJoystickGUIDInfo ← Lib {"void" "SDL_GetJoystickGUIDInfo" "int" "void*" "void*" "void*" "void*"}
+  GetJoystickGUIDInfo ← Lib {"void" "SDL_GetJoystickGUIDInfo" "uchar[16]" "ushort*" "ushort*" "ushort*" "ushort*"}
   JoystickConnected ← Lib {"uchar" "SDL_JoystickConnected" "void*"}
-  GetJoystickID ← Lib {"int" "SDL_GetJoystickID" "void*"}
+  GetJoystickID ← Lib {"uint" "SDL_GetJoystickID" "void*"}
   GetNumJoystickAxes ← Lib {"int" "SDL_GetNumJoystickAxes" "void*"}
   GetNumJoystickBalls ← Lib {"int" "SDL_GetNumJoystickBalls" "void*"}
   GetNumJoystickHats ← Lib {"int" "SDL_GetNumJoystickHats" "void*"}
@@ -503,8 +483,8 @@ EventWindowCloseRequested ← 528
   JoystickEventsEnabled ← Lib {"uchar" "SDL_JoystickEventsEnabled" }
   UpdateJoysticks ← Lib {"void" "SDL_UpdateJoysticks" }
   GetJoystickAxis ← Lib {"short" "SDL_GetJoystickAxis" "void*" "int"}
-  GetJoystickAxisInitialState ← Lib {"uchar" "SDL_GetJoystickAxisInitialState" "void*" "int" "void*"}
-  GetJoystickBall ← Lib {"uchar" "SDL_GetJoystickBall" "void*" "int" "void*" "void*"}
+  GetJoystickAxisInitialState ← Lib {"uchar" "SDL_GetJoystickAxisInitialState" "void*" "int" "short*"}
+  GetJoystickBall ← Lib {"uchar" "SDL_GetJoystickBall" "void*" "int" "int*" "int*"}
   GetJoystickHat ← Lib {"uchar" "SDL_GetJoystickHat" "void*" "int"}
   GetJoystickButton ← Lib {"uchar" "SDL_GetJoystickButton" "void*" "int"}
   RumbleJoystick ← Lib {"uchar" "SDL_RumbleJoystick" "void*" "ushort" "ushort" "uint"}
@@ -513,67 +493,64 @@ EventWindowCloseRequested ← 528
   SendJoystickEffect ← Lib {"uchar" "SDL_SendJoystickEffect" "void*" "void*" "int"}
   CloseJoystick ← Lib {"void" "SDL_CloseJoystick" "void*"}
   GetJoystickConnectionState ← Lib {"int" "SDL_GetJoystickConnectionState" "void*"}
-  GetJoystickPowerInfo ← Lib {"int" "SDL_GetJoystickPowerInfo" "void*" "void*"}
+  GetJoystickPowerInfo ← Lib {"int" "SDL_GetJoystickPowerInfo" "void*" "int*"}
   HasKeyboard ← Lib {"uchar" "SDL_HasKeyboard" }
-  GetKeyboards ← Lib {"void*" "SDL_GetKeyboards" "void*"}
-  GetKeyboardNameForID ← Lib {"char*" "SDL_GetKeyboardNameForID" "int"}
+  GetKeyboards ← Lib {"void*" "SDL_GetKeyboards" "int*"}
+  GetKeyboardNameForID ← Lib {"char*" "SDL_GetKeyboardNameForID" "uint"}
   GetKeyboardFocus ← Lib {"void*" "SDL_GetKeyboardFocus" }
-  GetKeyboardState ← Lib {"void*" "SDL_GetKeyboardState" "void*"}
+  GetKeyboardState ← Lib {"void*" "SDL_GetKeyboardState" "int*"}
   ResetKeyboard ← Lib {"void" "SDL_ResetKeyboard" }
-  GetModState ← Lib {"int" "SDL_GetModState" }
-  SetModState ← Lib {"void" "SDL_SetModState" "int"}
-  GetKeyFromScancode ← Lib {"int" "SDL_GetKeyFromScancode" "int" "int" "uchar"}
-  GetScancodeFromKey ← Lib {"int" "SDL_GetScancodeFromKey" "int" "void*"}
+  GetModState ← Lib {"ushort" "SDL_GetModState" }
+  SetModState ← Lib {"void" "SDL_SetModState" "ushort"}
+  GetKeyFromScancode ← Lib {"uint" "SDL_GetKeyFromScancode" "int" "ushort" "uchar"}
+  GetScancodeFromKey ← Lib {"int" "SDL_GetScancodeFromKey" "uint" "void*"}
   SetScancodeName ← Lib {"uchar" "SDL_SetScancodeName" "int" "char*"}
   GetScancodeName ← Lib {"char*" "SDL_GetScancodeName" "int"}
   GetScancodeFromName ← Lib {"int" "SDL_GetScancodeFromName" "char*"}
-  GetKeyName ← Lib {"char*" "SDL_GetKeyName" "int"}
-  GetKeyFromName ← Lib {"int" "SDL_GetKeyFromName" "char*"}
+  GetKeyName ← Lib {"char*" "SDL_GetKeyName" "uint"}
+  GetKeyFromName ← Lib {"uint" "SDL_GetKeyFromName" "char*"}
   StartTextInput ← Lib {"uchar" "SDL_StartTextInput" "void*"}
   StartTextInputWithProperties ← Lib {"uchar" "SDL_StartTextInputWithProperties" "void*" "uint"}
   TextInputActive ← Lib {"uchar" "SDL_TextInputActive" "void*"}
   StopTextInput ← Lib {"uchar" "SDL_StopTextInput" "void*"}
   ClearComposition ← Lib {"uchar" "SDL_ClearComposition" "void*"}
   SetTextInputArea ← Lib {"uchar" "SDL_SetTextInputArea" "void*" "void*" "int"}
-  GetTextInputArea ← Lib {"uchar" "SDL_GetTextInputArea" "void*" "void*" "void*"}
+  GetTextInputArea ← Lib {"uchar" "SDL_GetTextInputArea" "void*" "void*" "int*"}
   HasScreenKeyboardSupport ← Lib {"uchar" "SDL_HasScreenKeyboardSupport" }
   ScreenKeyboardShown ← Lib {"uchar" "SDL_ScreenKeyboardShown" "void*"}
   LoadObject ← Lib {"void*" "SDL_LoadObject" "char*"}
-  LoadFunction ← Lib {"int" "SDL_LoadFunction" "void*" "char*"}
+  LoadFunction ← Lib {"void*" "SDL_LoadFunction" "void*" "char*"}
   UnloadObject ← Lib {"void" "SDL_UnloadObject" "void*"}
-  GetPreferredLocales ← Lib {"void*" "SDL_GetPreferredLocales" "void*"}
+  GetPreferredLocales ← Lib {"void*" "SDL_GetPreferredLocales" "int*"}
   SetLogPriorities ← Lib {"void" "SDL_SetLogPriorities" "int"}
   SetLogPriority ← Lib {"void" "SDL_SetLogPriority" "int" "int"}
   GetLogPriority ← Lib {"int" "SDL_GetLogPriority" "int"}
   ResetLogPriorities ← Lib {"void" "SDL_ResetLogPriorities" }
   SetLogPriorityPrefix ← Lib {"uchar" "SDL_SetLogPriorityPrefix" "int" "char*"}
-  GetDefaultLogOutputFunction ← Lib {"int" "SDL_GetDefaultLogOutputFunction" }
   GetLogOutputFunction ← Lib {"void" "SDL_GetLogOutputFunction" "void*" "void*"}
-  SetLogOutputFunction ← Lib {"void" "SDL_SetLogOutputFunction" "int" "void*"}
   SetMainReady ← Lib {"void" "SDL_SetMainReady" }
   RegisterApp ← Lib {"uchar" "SDL_RegisterApp" "char*" "uint" "void*"}
   UnregisterApp ← Lib {"void" "SDL_UnregisterApp" }
   GDKSuspendComplete ← Lib {"void" "SDL_GDKSuspendComplete" }
-  ShowMessageBox ← Lib {"uchar" "SDL_ShowMessageBox" "void*" "void*"}
-  ShowSimpleMessageBox ← Lib {"uchar" "SDL_ShowSimpleMessageBox" "int" "char*" "char*" "void*"}
-  MetalCreateView ← Lib {"int" "SDL_Metal_CreateView" "void*"}
-  MetalDestroyView ← Lib {"void" "SDL_Metal_DestroyView" "int"}
-  MetalGetLayer ← Lib {"void*" "SDL_Metal_GetLayer" "int"}
+  ShowMessageBox ← Lib {"uchar" "SDL_ShowMessageBox" "void*" "int*"}
+  ShowSimpleMessageBox ← Lib {"uchar" "SDL_ShowSimpleMessageBox" "uint" "char*" "char*" "void*"}
+  MetalCreateView ← Lib {"void*" "SDL_Metal_CreateView" "void*"}
+  MetalDestroyView ← Lib {"void" "SDL_Metal_DestroyView" "void*"}
+  MetalGetLayer ← Lib {"void*" "SDL_Metal_GetLayer" "void*"}
   OpenURL ← Lib {"uchar" "SDL_OpenURL" "char*"}
   HasMouse ← Lib {"uchar" "SDL_HasMouse" }
-  GetMice ← Lib {"void*" "SDL_GetMice" "void*"}
-  GetMouseNameForID ← Lib {"char*" "SDL_GetMouseNameForID" "int"}
+  GetMice ← Lib {"void*" "SDL_GetMice" "int*"}
+  GetMouseNameForID ← Lib {"char*" "SDL_GetMouseNameForID" "uint"}
   GetMouseFocus ← Lib {"void*" "SDL_GetMouseFocus" }
-  GetMouseState ← Lib {"int" "SDL_GetMouseState" "void*" "void*"}
-  GetGlobalMouseState ← Lib {"int" "SDL_GetGlobalMouseState" "void*" "void*"}
-  GetRelativeMouseState ← Lib {"int" "SDL_GetRelativeMouseState" "void*" "void*"}
+  GetMouseState ← Lib {"uint" "SDL_GetMouseState" "float*" "float*"}
+  GetGlobalMouseState ← Lib {"uint" "SDL_GetGlobalMouseState" "float*" "float*"}
+  GetRelativeMouseState ← Lib {"uint" "SDL_GetRelativeMouseState" "float*" "float*"}
   WarpMouseInWindow ← Lib {"void" "SDL_WarpMouseInWindow" "void*" "float" "float"}
   WarpMouseGlobal ← Lib {"uchar" "SDL_WarpMouseGlobal" "float" "float"}
-  SetRelativeMouseTransform ← Lib {"uchar" "SDL_SetRelativeMouseTransform" "int" "void*"}
   SetWindowRelativeMouseMode ← Lib {"uchar" "SDL_SetWindowRelativeMouseMode" "void*" "uchar"}
   GetWindowRelativeMouseMode ← Lib {"uchar" "SDL_GetWindowRelativeMouseMode" "void*"}
   CaptureMouse ← Lib {"uchar" "SDL_CaptureMouse" "uchar"}
-  CreateCursor ← Lib {"void*" "SDL_CreateCursor" "void*" "void*" "int" "int" "int" "int"}
+  CreateCursor ← Lib {"void*" "SDL_CreateCursor" "uchar*" "uchar*" "int" "int" "int" "int"}
   CreateColorCursor ← Lib {"void*" "SDL_CreateColorCursor" "void*" "int" "int"}
   CreateSystemCursor ← Lib {"void*" "SDL_CreateSystemCursor" "int"}
   SetCursor ← Lib {"uchar" "SDL_SetCursor" "void*"}
@@ -603,35 +580,34 @@ EventWindowCloseRequested ← 528
   ShouldInit ← Lib {"uchar" "SDL_ShouldInit" "void*"}
   ShouldQuit ← Lib {"uchar" "SDL_ShouldQuit" "void*"}
   SetInitialized ← Lib {"void" "SDL_SetInitialized" "void*" "uchar"}
-  GetPenDeviceType ← Lib {"int" "SDL_GetPenDeviceType" "int"}
-  GetPixelFormatName ← Lib {"char*" "SDL_GetPixelFormatName" "int"}
-  GetMasksForPixelFormat ← Lib {"uchar" "SDL_GetMasksForPixelFormat" "int" "void*" "void*" "void*" "void*" "void*"}
-  GetPixelFormatForMasks ← Lib {"int" "SDL_GetPixelFormatForMasks" "int" "uint" "uint" "uint" "uint"}
-  GetPixelFormatDetails ← Lib {"void*" "SDL_GetPixelFormatDetails" "int"}
+  GetPenDeviceType ← Lib {"int" "SDL_GetPenDeviceType" "uint"}
+  GetPixelFormatName ← Lib {"char*" "SDL_GetPixelFormatName" "uint"}
+  GetMasksForPixelFormat ← Lib {"uchar" "SDL_GetMasksForPixelFormat" "uint" "int*" "uint*" "uint*" "uint*" "uint*"}
+  GetPixelFormatForMasks ← Lib {"uint" "SDL_GetPixelFormatForMasks" "int" "uint" "uint" "uint" "uint"}
+  GetPixelFormatDetails ← Lib {"void*" "SDL_GetPixelFormatDetails" "uint"}
   CreatePalette ← Lib {"void*" "SDL_CreatePalette" "int"}
   SetPaletteColors ← Lib {"uchar" "SDL_SetPaletteColors" "void*" "void*" "int" "int"}
   DestroyPalette ← Lib {"void" "SDL_DestroyPalette" "void*"}
   MapRGB ← Lib {"uint" "SDL_MapRGB" "void*" "void*" "uchar" "uchar" "uchar"}
   MapRGBA ← Lib {"uint" "SDL_MapRGBA" "void*" "void*" "uchar" "uchar" "uchar" "uchar"}
-  GetRGB ← Lib {"void" "SDL_GetRGB" "uint" "void*" "void*" "void*" "void*" "void*"}
-  GetRGBA ← Lib {"void" "SDL_GetRGBA" "uint" "void*" "void*" "void*" "void*" "void*" "void*"}
+  GetRGB ← Lib {"void" "SDL_GetRGB" "uint" "void*" "void*" "uchar*" "uchar*" "uchar*"}
+  GetRGBA ← Lib {"void" "SDL_GetRGBA" "uint" "void*" "void*" "uchar*" "uchar*" "uchar*" "uchar*"}
   GetPlatform ← Lib {"char*" "SDL_GetPlatform" }
-  GetPowerInfo ← Lib {"int" "SDL_GetPowerInfo" "void*" "void*"}
+  GetPowerInfo ← Lib {"int" "SDL_GetPowerInfo" "int*" "int*"}
   CreateProcess ← Lib {"void*" "SDL_CreateProcess" "void*" "uchar"}
   CreateProcessWithProperties ← Lib {"void*" "SDL_CreateProcessWithProperties" "uint"}
   GetProcessProperties ← Lib {"uint" "SDL_GetProcessProperties" "void*"}
-  ReadProcess ← Lib {"void*" "SDL_ReadProcess" "void*" "void*" "void*"}
+  ReadProcess ← Lib {"void*" "SDL_ReadProcess" "void*" "void*" "int*"}
   GetProcessInput ← Lib {"void*" "SDL_GetProcessInput" "void*"}
   GetProcessOutput ← Lib {"void*" "SDL_GetProcessOutput" "void*"}
   KillProcess ← Lib {"uchar" "SDL_KillProcess" "void*" "uchar"}
-  WaitProcess ← Lib {"uchar" "SDL_WaitProcess" "void*" "uchar" "void*"}
+  WaitProcess ← Lib {"uchar" "SDL_WaitProcess" "void*" "uchar" "int*"}
   DestroyProcess ← Lib {"void" "SDL_DestroyProcess" "void*"}
   GetGlobalProperties ← Lib {"uint" "SDL_GetGlobalProperties" }
   CreateProperties ← Lib {"uint" "SDL_CreateProperties" }
   CopyProperties ← Lib {"uchar" "SDL_CopyProperties" "uint" "uint"}
   LockProperties ← Lib {"uchar" "SDL_LockProperties" "uint"}
   UnlockProperties ← Lib {"void" "SDL_UnlockProperties" "uint"}
-  SetPointerPropertyWithCleanup ← Lib {"uchar" "SDL_SetPointerPropertyWithCleanup" "uint" "char*" "void*" "int" "void*"}
   SetPointerProperty ← Lib {"uchar" "SDL_SetPointerProperty" "uint" "char*" "void*"}
   SetStringProperty ← Lib {"uchar" "SDL_SetStringProperty" "uint" "char*" "char*"}
   SetNumberProperty ← Lib {"uchar" "SDL_SetNumberProperty" "uint" "char*" "long long"}
@@ -645,18 +621,17 @@ EventWindowCloseRequested ← 528
   GetFloatProperty ← Lib {"float" "SDL_GetFloatProperty" "uint" "char*" "float"}
   GetBooleanProperty ← Lib {"uchar" "SDL_GetBooleanProperty" "uint" "char*" "uchar"}
   ClearProperty ← Lib {"uchar" "SDL_ClearProperty" "uint" "char*"}
-  EnumerateProperties ← Lib {"uchar" "SDL_EnumerateProperties" "uint" "int" "void*"}
   DestroyProperties ← Lib {"void" "SDL_DestroyProperties" "uint"}
   HasRectIntersection ← Lib {"uchar" "SDL_HasRectIntersection" "void*" "void*"}
   GetRectIntersection ← Lib {"uchar" "SDL_GetRectIntersection" "void*" "void*" "void*"}
   GetRectUnion ← Lib {"uchar" "SDL_GetRectUnion" "void*" "void*" "void*"}
   GetRectEnclosingPoints ← Lib {"uchar" "SDL_GetRectEnclosingPoints" "void*" "int" "void*" "void*"}
-  GetRectAndLineIntersection ← Lib {"uchar" "SDL_GetRectAndLineIntersection" "void*" "void*" "void*" "void*" "void*"}
+  GetRectAndLineIntersection ← Lib {"uchar" "SDL_GetRectAndLineIntersection" "void*" "int*" "int*" "int*" "int*"}
   HasRectIntersectionFloat ← Lib {"uchar" "SDL_HasRectIntersectionFloat" "void*" "void*"}
   GetRectIntersectionFloat ← Lib {"uchar" "SDL_GetRectIntersectionFloat" "void*" "void*" "void*"}
   GetRectUnionFloat ← Lib {"uchar" "SDL_GetRectUnionFloat" "void*" "void*" "void*"}
   GetRectEnclosingPointsFloat ← Lib {"uchar" "SDL_GetRectEnclosingPointsFloat" "void*" "int" "void*" "void*"}
-  GetRectAndLineIntersectionFloat ← Lib {"uchar" "SDL_GetRectAndLineIntersectionFloat" "void*" "void*" "void*" "void*" "void*"}
+  GetRectAndLineIntersectionFloat ← Lib {"uchar" "SDL_GetRectAndLineIntersectionFloat" "void*" "float*" "float*" "float*" "float*"}
   GetNumRenderDrivers ← Lib {"int" "SDL_GetNumRenderDrivers" }
   GetRenderDriver ← Lib {"char*" "SDL_GetRenderDriver" "int"}
   CreateWindowAndRenderer ← Lib {"uchar" "SDL_CreateWindowAndRenderer" "char*" "int" "int" "ulong" "void*" "void*"}
@@ -669,41 +644,41 @@ EventWindowCloseRequested ← 528
   GetRenderWindow ← Lib {"void*" "SDL_GetRenderWindow" "void*"}
   GetRendererName ← Lib {"char*" "SDL_GetRendererName" "void*"}
   GetRendererProperties ← Lib {"uint" "SDL_GetRendererProperties" "void*"}
-  GetRenderOutputSize ← Lib {"uchar" "SDL_GetRenderOutputSize" "void*" "void*" "void*"}
-  GetCurrentRenderOutputSize ← Lib {"uchar" "SDL_GetCurrentRenderOutputSize" "void*" "void*" "void*"}
-  CreateTexture ← Lib {"void*" "SDL_CreateTexture" "void*" "int" "int" "int" "int"}
+  GetRenderOutputSize ← Lib {"uchar" "SDL_GetRenderOutputSize" "void*" "int*" "int*"}
+  GetCurrentRenderOutputSize ← Lib {"uchar" "SDL_GetCurrentRenderOutputSize" "void*" "int*" "int*"}
+  CreateTexture ← Lib {"void*" "SDL_CreateTexture" "void*" "uint" "int" "int" "int"}
   CreateTextureFromSurface ← Lib {"void*" "SDL_CreateTextureFromSurface" "void*" "void*"}
   CreateTextureWithProperties ← Lib {"void*" "SDL_CreateTextureWithProperties" "void*" "uint"}
   GetTextureProperties ← Lib {"uint" "SDL_GetTextureProperties" "void*"}
   GetRendererFromTexture ← Lib {"void*" "SDL_GetRendererFromTexture" "void*"}
-  GetTextureSize ← Lib {"uchar" "SDL_GetTextureSize" "void*" "void*" "void*"}
+  GetTextureSize ← Lib {"uchar" "SDL_GetTextureSize" "void*" "float*" "float*"}
   SetTexturePalette ← Lib {"uchar" "SDL_SetTexturePalette" "void*" "void*"}
   GetTexturePalette ← Lib {"void*" "SDL_GetTexturePalette" "void*"}
   SetTextureColorMod ← Lib {"uchar" "SDL_SetTextureColorMod" "void*" "uchar" "uchar" "uchar"}
   SetTextureColorModFloat ← Lib {"uchar" "SDL_SetTextureColorModFloat" "void*" "float" "float" "float"}
-  GetTextureColorMod ← Lib {"uchar" "SDL_GetTextureColorMod" "void*" "void*" "void*" "void*"}
-  GetTextureColorModFloat ← Lib {"uchar" "SDL_GetTextureColorModFloat" "void*" "void*" "void*" "void*"}
+  GetTextureColorMod ← Lib {"uchar" "SDL_GetTextureColorMod" "void*" "uchar*" "uchar*" "uchar*"}
+  GetTextureColorModFloat ← Lib {"uchar" "SDL_GetTextureColorModFloat" "void*" "float*" "float*" "float*"}
   SetTextureAlphaMod ← Lib {"uchar" "SDL_SetTextureAlphaMod" "void*" "uchar"}
   SetTextureAlphaModFloat ← Lib {"uchar" "SDL_SetTextureAlphaModFloat" "void*" "float"}
-  GetTextureAlphaMod ← Lib {"uchar" "SDL_GetTextureAlphaMod" "void*" "void*"}
-  GetTextureAlphaModFloat ← Lib {"uchar" "SDL_GetTextureAlphaModFloat" "void*" "void*"}
-  SetTextureBlendMode ← Lib {"uchar" "SDL_SetTextureBlendMode" "void*" "int"}
+  GetTextureAlphaMod ← Lib {"uchar" "SDL_GetTextureAlphaMod" "void*" "uchar*"}
+  GetTextureAlphaModFloat ← Lib {"uchar" "SDL_GetTextureAlphaModFloat" "void*" "float*"}
+  SetTextureBlendMode ← Lib {"uchar" "SDL_SetTextureBlendMode" "void*" "uint"}
   GetTextureBlendMode ← Lib {"uchar" "SDL_GetTextureBlendMode" "void*" "void*"}
   SetTextureScaleMode ← Lib {"uchar" "SDL_SetTextureScaleMode" "void*" "int"}
   GetTextureScaleMode ← Lib {"uchar" "SDL_GetTextureScaleMode" "void*" "void*"}
   UpdateTexture ← Lib {"uchar" "SDL_UpdateTexture" "void*" "void*" "void*" "int"}
-  UpdateYUVTexture ← Lib {"uchar" "SDL_UpdateYUVTexture" "void*" "void*" "void*" "int" "void*" "int" "void*" "int"}
-  UpdateNVTexture ← Lib {"uchar" "SDL_UpdateNVTexture" "void*" "void*" "void*" "int" "void*" "int"}
-  LockTexture ← Lib {"uchar" "SDL_LockTexture" "void*" "void*" "void*" "void*"}
+  UpdateYUVTexture ← Lib {"uchar" "SDL_UpdateYUVTexture" "void*" "void*" "uchar*" "int" "uchar*" "int" "uchar*" "int"}
+  UpdateNVTexture ← Lib {"uchar" "SDL_UpdateNVTexture" "void*" "void*" "uchar*" "int" "uchar*" "int"}
+  LockTexture ← Lib {"uchar" "SDL_LockTexture" "void*" "void*" "void*" "int*"}
   LockTextureToSurface ← Lib {"uchar" "SDL_LockTextureToSurface" "void*" "void*" "void*"}
   UnlockTexture ← Lib {"void" "SDL_UnlockTexture" "void*"}
   SetRenderTarget ← Lib {"uchar" "SDL_SetRenderTarget" "void*" "void*"}
   GetRenderTarget ← Lib {"void*" "SDL_GetRenderTarget" "void*"}
   SetRenderLogicalPresentation ← Lib {"uchar" "SDL_SetRenderLogicalPresentation" "void*" "int" "int" "int"}
-  GetRenderLogicalPresentation ← Lib {"uchar" "SDL_GetRenderLogicalPresentation" "void*" "void*" "void*" "void*"}
+  GetRenderLogicalPresentation ← Lib {"uchar" "SDL_GetRenderLogicalPresentation" "void*" "int*" "int*" "void*"}
   GetRenderLogicalPresentationRect ← Lib {"uchar" "SDL_GetRenderLogicalPresentationRect" "void*" "void*"}
-  RenderCoordinatesFromWindow ← Lib {"uchar" "SDL_RenderCoordinatesFromWindow" "void*" "float" "float" "void*" "void*"}
-  RenderCoordinatesToWindow ← Lib {"uchar" "SDL_RenderCoordinatesToWindow" "void*" "float" "float" "void*" "void*"}
+  RenderCoordinatesFromWindow ← Lib {"uchar" "SDL_RenderCoordinatesFromWindow" "void*" "float" "float" "float*" "float*"}
+  RenderCoordinatesToWindow ← Lib {"uchar" "SDL_RenderCoordinatesToWindow" "void*" "float" "float" "float*" "float*"}
   ConvertEventToRenderCoordinates ← Lib {"uchar" "SDL_ConvertEventToRenderCoordinates" "void*" "void*"}
   SetRenderViewport ← Lib {"uchar" "SDL_SetRenderViewport" "void*" "void*"}
   GetRenderViewport ← Lib {"uchar" "SDL_GetRenderViewport" "void*" "void*"}
@@ -713,14 +688,14 @@ EventWindowCloseRequested ← 528
   GetRenderClipRect ← Lib {"uchar" "SDL_GetRenderClipRect" "void*" "void*"}
   RenderClipEnabled ← Lib {"uchar" "SDL_RenderClipEnabled" "void*"}
   SetRenderScale ← Lib {"uchar" "SDL_SetRenderScale" "void*" "float" "float"}
-  GetRenderScale ← Lib {"uchar" "SDL_GetRenderScale" "void*" "void*" "void*"}
+  GetRenderScale ← Lib {"uchar" "SDL_GetRenderScale" "void*" "float*" "float*"}
   SetRenderDrawColor ← Lib {"uchar" "SDL_SetRenderDrawColor" "void*" "uchar" "uchar" "uchar" "uchar"}
   SetRenderDrawColorFloat ← Lib {"uchar" "SDL_SetRenderDrawColorFloat" "void*" "float" "float" "float" "float"}
-  GetRenderDrawColor ← Lib {"uchar" "SDL_GetRenderDrawColor" "void*" "void*" "void*" "void*" "void*"}
-  GetRenderDrawColorFloat ← Lib {"uchar" "SDL_GetRenderDrawColorFloat" "void*" "void*" "void*" "void*" "void*"}
+  GetRenderDrawColor ← Lib {"uchar" "SDL_GetRenderDrawColor" "void*" "uchar*" "uchar*" "uchar*" "uchar*"}
+  GetRenderDrawColorFloat ← Lib {"uchar" "SDL_GetRenderDrawColorFloat" "void*" "float*" "float*" "float*" "float*"}
   SetRenderColorScale ← Lib {"uchar" "SDL_SetRenderColorScale" "void*" "float"}
-  GetRenderColorScale ← Lib {"uchar" "SDL_GetRenderColorScale" "void*" "void*"}
-  SetRenderDrawBlendMode ← Lib {"uchar" "SDL_SetRenderDrawBlendMode" "void*" "int"}
+  GetRenderColorScale ← Lib {"uchar" "SDL_GetRenderColorScale" "void*" "float*"}
+  SetRenderDrawBlendMode ← Lib {"uchar" "SDL_SetRenderDrawBlendMode" "void*" "uint"}
   GetRenderDrawBlendMode ← Lib {"uchar" "SDL_GetRenderDrawBlendMode" "void*" "void*"}
   RenderClear ← Lib {"uchar" "SDL_RenderClear" "void*"}
   RenderPoint ← Lib {"uchar" "SDL_RenderPoint" "void*" "float" "float"}
@@ -750,7 +725,7 @@ EventWindowCloseRequested ← 528
   GetRenderMetalCommandEncoder ← Lib {"void*" "SDL_GetRenderMetalCommandEncoder" "void*"}
   AddVulkanRenderSemaphores ← Lib {"uchar" "SDL_AddVulkanRenderSemaphores" "void*" "uint" "long long" "long long"}
   SetRenderVSync ← Lib {"uchar" "SDL_SetRenderVSync" "void*" "int"}
-  GetRenderVSync ← Lib {"uchar" "SDL_GetRenderVSync" "void*" "void*"}
+  GetRenderVSync ← Lib {"uchar" "SDL_GetRenderVSync" "void*" "int*"}
   RenderDebugText ← Lib {"uchar" "SDL_RenderDebugText" "void*" "float" "float" "char*"}
   SetDefaultTextureScaleMode ← Lib {"uchar" "SDL_SetDefaultTextureScaleMode" "void*" "int"}
   GetDefaultTextureScaleMode ← Lib {"uchar" "SDL_GetDefaultTextureScaleMode" "void*" "void*"}
@@ -758,23 +733,22 @@ EventWindowCloseRequested ← 528
   SetGPURenderStateFragmentUniforms ← Lib {"uchar" "SDL_SetGPURenderStateFragmentUniforms" "void*" "uint" "void*" "uint"}
   SetGPURenderState ← Lib {"uchar" "SDL_SetGPURenderState" "void*" "void*"}
   DestroyGPURenderState ← Lib {"void" "SDL_DestroyGPURenderState" "void*"}
-  GetSensors ← Lib {"void*" "SDL_GetSensors" "void*"}
-  GetSensorNameForID ← Lib {"char*" "SDL_GetSensorNameForID" "int"}
-  GetSensorTypeForID ← Lib {"int" "SDL_GetSensorTypeForID" "int"}
-  GetSensorNonPortableTypeForID ← Lib {"int" "SDL_GetSensorNonPortableTypeForID" "int"}
-  OpenSensor ← Lib {"void*" "SDL_OpenSensor" "int"}
-  GetSensorFromID ← Lib {"void*" "SDL_GetSensorFromID" "int"}
+  GetSensors ← Lib {"void*" "SDL_GetSensors" "int*"}
+  GetSensorNameForID ← Lib {"char*" "SDL_GetSensorNameForID" "uint"}
+  GetSensorTypeForID ← Lib {"int" "SDL_GetSensorTypeForID" "uint"}
+  GetSensorNonPortableTypeForID ← Lib {"int" "SDL_GetSensorNonPortableTypeForID" "uint"}
+  OpenSensor ← Lib {"void*" "SDL_OpenSensor" "uint"}
+  GetSensorFromID ← Lib {"void*" "SDL_GetSensorFromID" "uint"}
   GetSensorProperties ← Lib {"uint" "SDL_GetSensorProperties" "void*"}
   GetSensorName ← Lib {"char*" "SDL_GetSensorName" "void*"}
   GetSensorType ← Lib {"int" "SDL_GetSensorType" "void*"}
   GetSensorNonPortableType ← Lib {"int" "SDL_GetSensorNonPortableType" "void*"}
-  GetSensorID ← Lib {"int" "SDL_GetSensorID" "void*"}
-  GetSensorData ← Lib {"uchar" "SDL_GetSensorData" "void*" "void*" "int"}
+  GetSensorID ← Lib {"uint" "SDL_GetSensorID" "void*"}
+  GetSensorData ← Lib {"uchar" "SDL_GetSensorData" "void*" "float*" "int"}
   CloseSensor ← Lib {"void" "SDL_CloseSensor" "void*"}
   UpdateSensors ← Lib {"void" "SDL_UpdateSensors" }
   GetOriginalMemoryFunctions ← Lib {"void" "SDL_GetOriginalMemoryFunctions" "void*" "void*" "void*" "void*"}
   GetMemoryFunctions ← Lib {"void" "SDL_GetMemoryFunctions" "void*" "void*" "void*" "void*"}
-  SetMemoryFunctions ← Lib {"uchar" "SDL_SetMemoryFunctions" "int" "int" "int" "int"}
   GetNumAllocations ← Lib {"int" "SDL_GetNumAllocations" }
   GetEnvironment ← Lib {"void*" "SDL_GetEnvironment" }
   CreateEnvironment ← Lib {"void*" "SDL_CreateEnvironment" "uchar"}
@@ -792,19 +766,18 @@ EventWindowCloseRequested ← 528
   OpenStorage ← Lib {"void*" "SDL_OpenStorage" "void*" "void*"}
   CloseStorage ← Lib {"uchar" "SDL_CloseStorage" "void*"}
   StorageReady ← Lib {"uchar" "SDL_StorageReady" "void*"}
-  GetStorageFileSize ← Lib {"uchar" "SDL_GetStorageFileSize" "void*" "char*" "void*"}
+  GetStorageFileSize ← Lib {"uchar" "SDL_GetStorageFileSize" "void*" "char*" "ulong*"}
   ReadStorageFile ← Lib {"uchar" "SDL_ReadStorageFile" "void*" "char*" "void*" "ulong"}
   WriteStorageFile ← Lib {"uchar" "SDL_WriteStorageFile" "void*" "char*" "void*" "ulong"}
   CreateStorageDirectory ← Lib {"uchar" "SDL_CreateStorageDirectory" "void*" "char*"}
-  EnumerateStorageDirectory ← Lib {"uchar" "SDL_EnumerateStorageDirectory" "void*" "char*" "int" "void*"}
   RemoveStoragePath ← Lib {"uchar" "SDL_RemoveStoragePath" "void*" "char*"}
   RenameStoragePath ← Lib {"uchar" "SDL_RenameStoragePath" "void*" "char*" "char*"}
   CopyStorageFile ← Lib {"uchar" "SDL_CopyStorageFile" "void*" "char*" "char*"}
   GetStoragePathInfo ← Lib {"uchar" "SDL_GetStoragePathInfo" "void*" "char*" "void*"}
   GetStorageSpaceRemaining ← Lib {"ulong" "SDL_GetStorageSpaceRemaining" "void*"}
-  GlobStorageDirectory ← Lib {"void*" "SDL_GlobStorageDirectory" "void*" "char*" "char*" "int" "void*"}
-  CreateSurface ← Lib {"void*" "SDL_CreateSurface" "int" "int" "int"}
-  CreateSurfaceFrom ← Lib {"void*" "SDL_CreateSurfaceFrom" "int" "int" "int" "void*" "int"}
+  GlobStorageDirectory ← Lib {"void*" "SDL_GlobStorageDirectory" "void*" "char*" "char*" "uint" "int*"}
+  CreateSurface ← Lib {"void*" "SDL_CreateSurface" "int" "int" "uint"}
+  CreateSurfaceFrom ← Lib {"void*" "SDL_CreateSurfaceFrom" "int" "int" "uint" "void*" "int"}
   DestroySurface ← Lib {"void" "SDL_DestroySurface" "void*"}
   GetSurfaceProperties ← Lib {"uint" "SDL_GetSurfaceProperties" "void*"}
   SetSurfaceColorspace ← Lib {"uchar" "SDL_SetSurfaceColorspace" "void*" "int"}
@@ -814,7 +787,7 @@ EventWindowCloseRequested ← 528
   GetSurfacePalette ← Lib {"void*" "SDL_GetSurfacePalette" "void*"}
   AddSurfaceAlternateImage ← Lib {"uchar" "SDL_AddSurfaceAlternateImage" "void*" "void*"}
   SurfaceHasAlternateImages ← Lib {"uchar" "SDL_SurfaceHasAlternateImages" "void*"}
-  GetSurfaceImages ← Lib {"void*" "SDL_GetSurfaceImages" "void*" "void*"}
+  GetSurfaceImages ← Lib {"void*" "SDL_GetSurfaceImages" "void*" "int*"}
   RemoveSurfaceAlternateImages ← Lib {"void" "SDL_RemoveSurfaceAlternateImages" "void*"}
   LockSurface ← Lib {"uchar" "SDL_LockSurface" "void*"}
   UnlockSurface ← Lib {"void" "SDL_UnlockSurface" "void*"}
@@ -832,12 +805,12 @@ EventWindowCloseRequested ← 528
   SurfaceHasRLE ← Lib {"uchar" "SDL_SurfaceHasRLE" "void*"}
   SetSurfaceColorKey ← Lib {"uchar" "SDL_SetSurfaceColorKey" "void*" "uchar" "uint"}
   SurfaceHasColorKey ← Lib {"uchar" "SDL_SurfaceHasColorKey" "void*"}
-  GetSurfaceColorKey ← Lib {"uchar" "SDL_GetSurfaceColorKey" "void*" "void*"}
+  GetSurfaceColorKey ← Lib {"uchar" "SDL_GetSurfaceColorKey" "void*" "uint*"}
   SetSurfaceColorMod ← Lib {"uchar" "SDL_SetSurfaceColorMod" "void*" "uchar" "uchar" "uchar"}
-  GetSurfaceColorMod ← Lib {"uchar" "SDL_GetSurfaceColorMod" "void*" "void*" "void*" "void*"}
+  GetSurfaceColorMod ← Lib {"uchar" "SDL_GetSurfaceColorMod" "void*" "uchar*" "uchar*" "uchar*"}
   SetSurfaceAlphaMod ← Lib {"uchar" "SDL_SetSurfaceAlphaMod" "void*" "uchar"}
-  GetSurfaceAlphaMod ← Lib {"uchar" "SDL_GetSurfaceAlphaMod" "void*" "void*"}
-  SetSurfaceBlendMode ← Lib {"uchar" "SDL_SetSurfaceBlendMode" "void*" "int"}
+  GetSurfaceAlphaMod ← Lib {"uchar" "SDL_GetSurfaceAlphaMod" "void*" "uchar*"}
+  SetSurfaceBlendMode ← Lib {"uchar" "SDL_SetSurfaceBlendMode" "void*" "uint"}
   GetSurfaceBlendMode ← Lib {"uchar" "SDL_GetSurfaceBlendMode" "void*" "void*"}
   SetSurfaceClipRect ← Lib {"uchar" "SDL_SetSurfaceClipRect" "void*" "void*"}
   GetSurfaceClipRect ← Lib {"uchar" "SDL_GetSurfaceClipRect" "void*" "void*"}
@@ -845,11 +818,11 @@ EventWindowCloseRequested ← 528
   RotateSurface ← Lib {"void*" "SDL_RotateSurface" "void*" "float"}
   DuplicateSurface ← Lib {"void*" "SDL_DuplicateSurface" "void*"}
   ScaleSurface ← Lib {"void*" "SDL_ScaleSurface" "void*" "int" "int" "int"}
-  ConvertSurface ← Lib {"void*" "SDL_ConvertSurface" "void*" "int"}
-  ConvertSurfaceAndColorspace ← Lib {"void*" "SDL_ConvertSurfaceAndColorspace" "void*" "int" "void*" "int" "uint"}
-  ConvertPixels ← Lib {"uchar" "SDL_ConvertPixels" "int" "int" "int" "void*" "int" "int" "void*" "int"}
-  ConvertPixelsAndColorspace ← Lib {"uchar" "SDL_ConvertPixelsAndColorspace" "int" "int" "int" "int" "uint" "void*" "int" "int" "int" "uint" "void*" "int"}
-  PremultiplyAlpha ← Lib {"uchar" "SDL_PremultiplyAlpha" "int" "int" "int" "void*" "int" "int" "void*" "int" "uchar"}
+  ConvertSurface ← Lib {"void*" "SDL_ConvertSurface" "void*" "uint"}
+  ConvertSurfaceAndColorspace ← Lib {"void*" "SDL_ConvertSurfaceAndColorspace" "void*" "uint" "void*" "int" "uint"}
+  ConvertPixels ← Lib {"uchar" "SDL_ConvertPixels" "int" "int" "uint" "void*" "int" "uint" "void*" "int"}
+  ConvertPixelsAndColorspace ← Lib {"uchar" "SDL_ConvertPixelsAndColorspace" "int" "int" "uint" "int" "uint" "void*" "int" "uint" "int" "uint" "void*" "int"}
+  PremultiplyAlpha ← Lib {"uchar" "SDL_PremultiplyAlpha" "int" "int" "uint" "void*" "int" "uint" "void*" "int" "uchar"}
   PremultiplySurfaceAlpha ← Lib {"uchar" "SDL_PremultiplySurfaceAlpha" "void*" "uchar"}
   ClearSurface ← Lib {"uchar" "SDL_ClearSurface" "void*" "float" "float" "float" "float"}
   FillSurfaceRect ← Lib {"uchar" "SDL_FillSurfaceRect" "void*" "void*" "uint"}
@@ -864,17 +837,14 @@ EventWindowCloseRequested ← 528
   BlitSurfaceNineGrid ← Lib {"uchar" "SDL_BlitSurface9Grid" "void*" "void*" "int" "int" "int" "int" "float" "int" "void*" "void*"}
   MapSurfaceRGB ← Lib {"uint" "SDL_MapSurfaceRGB" "void*" "uchar" "uchar" "uchar"}
   MapSurfaceRGBA ← Lib {"uint" "SDL_MapSurfaceRGBA" "void*" "uchar" "uchar" "uchar" "uchar"}
-  ReadSurfacePixel ← Lib {"uchar" "SDL_ReadSurfacePixel" "void*" "int" "int" "void*" "void*" "void*" "void*"}
-  ReadSurfacePixelFloat ← Lib {"uchar" "SDL_ReadSurfacePixelFloat" "void*" "int" "int" "void*" "void*" "void*" "void*"}
+  ReadSurfacePixel ← Lib {"uchar" "SDL_ReadSurfacePixel" "void*" "int" "int" "uchar*" "uchar*" "uchar*" "uchar*"}
+  ReadSurfacePixelFloat ← Lib {"uchar" "SDL_ReadSurfacePixelFloat" "void*" "int" "int" "float*" "float*" "float*" "float*"}
   WriteSurfacePixel ← Lib {"uchar" "SDL_WriteSurfacePixel" "void*" "int" "int" "uchar" "uchar" "uchar" "uchar"}
   WriteSurfacePixelFloat ← Lib {"uchar" "SDL_WriteSurfacePixelFloat" "void*" "int" "int" "float" "float" "float" "float"}
-  SetWindowsMessageHook ← Lib {"void" "SDL_SetWindowsMessageHook" "int" "void*"}
-  GetDirectThreeDNineAdapterIndex ← Lib {"int" "SDL_GetDirect3D9AdapterIndex" "int"}
-  GetDXGIOutputInfo ← Lib {"uchar" "SDL_GetDXGIOutputInfo" "int" "void*" "void*"}
-  SetXOneOneEventHook ← Lib {"void" "SDL_SetX11EventHook" "int" "void*"}
+  GetDirectThreeDNineAdapterIndex ← Lib {"int" "SDL_GetDirect3D9AdapterIndex" "uint"}
+  GetDXGIOutputInfo ← Lib {"uchar" "SDL_GetDXGIOutputInfo" "uint" "int*" "int*"}
   SetLinuxThreadPriority ← Lib {"uchar" "SDL_SetLinuxThreadPriority" "long long" "int"}
   SetLinuxThreadPriorityAndPolicy ← Lib {"uchar" "SDL_SetLinuxThreadPriorityAndPolicy" "long long" "int" "int"}
-  SetiOSAnimationCallback ← Lib {"uchar" "SDL_SetiOSAnimationCallback" "void*" "int" "int" "void*"}
   SetiOSEventPump ← Lib {"void" "SDL_SetiOSEventPump" "uchar"}
   GetAndroidJNIEnv ← Lib {"void*" "SDL_GetAndroidJNIEnv" }
   GetAndroidActivity ← Lib {"void*" "SDL_GetAndroidActivity" }
@@ -886,7 +856,6 @@ EventWindowCloseRequested ← 528
   GetAndroidExternalStorageState ← Lib {"uint" "SDL_GetAndroidExternalStorageState" }
   GetAndroidExternalStoragePath ← Lib {"char*" "SDL_GetAndroidExternalStoragePath" }
   GetAndroidCachePath ← Lib {"char*" "SDL_GetAndroidCachePath" }
-  RequestAndroidPermission ← Lib {"uchar" "SDL_RequestAndroidPermission" "char*" "int" "void*"}
   ShowAndroidToast ← Lib {"uchar" "SDL_ShowAndroidToast" "char*" "int" "int" "int" "int"}
   SendAndroidMessage ← Lib {"uchar" "SDL_SendAndroidMessage" "uint" "int"}
   IsTablet ← Lib {"uchar" "SDL_IsTablet" }
@@ -901,26 +870,23 @@ EventWindowCloseRequested ← 528
   OnApplicationDidChangeStatusBarOrientation ← Lib {"void" "SDL_OnApplicationDidChangeStatusBarOrientation" }
   GetGDKTaskQueue ← Lib {"uchar" "SDL_GetGDKTaskQueue" "void*"}
   GetGDKDefaultUser ← Lib {"uchar" "SDL_GetGDKDefaultUser" "void*"}
-  CreateThread ← Lib {"void*" "SDL_CreateThread" "int" "char*" "void*"}
   CreateThreadWithProperties ← Lib {"void*" "SDL_CreateThreadWithProperties" "uint"}
-  CreateThreadRuntime ← Lib {"void*" "SDL_CreateThreadRuntime" "int" "char*" "void*" "int" "int"}
-  CreateThreadWithPropertiesRuntime ← Lib {"void*" "SDL_CreateThreadWithPropertiesRuntime" "uint" "int" "int"}
+  CreateThreadWithPropertiesRuntime ← Lib {"void*" "SDL_CreateThreadWithPropertiesRuntime" "uint" "void*" "void*"}
   GetThreadName ← Lib {"char*" "SDL_GetThreadName" "void*"}
-  GetCurrentThreadID ← Lib {"int" "SDL_GetCurrentThreadID" }
-  GetThreadID ← Lib {"int" "SDL_GetThreadID" "void*"}
+  GetCurrentThreadID ← Lib {"ulong" "SDL_GetCurrentThreadID" }
+  GetThreadID ← Lib {"ulong" "SDL_GetThreadID" "void*"}
   SetCurrentThreadPriority ← Lib {"uchar" "SDL_SetCurrentThreadPriority" "int"}
-  WaitThread ← Lib {"void" "SDL_WaitThread" "void*" "void*"}
+  WaitThread ← Lib {"void" "SDL_WaitThread" "void*" "int*"}
   GetThreadState ← Lib {"int" "SDL_GetThreadState" "void*"}
   DetachThread ← Lib {"void" "SDL_DetachThread" "void*"}
   GetTLS ← Lib {"void*" "SDL_GetTLS" "void*"}
-  SetTLS ← Lib {"uchar" "SDL_SetTLS" "void*" "void*" "int"}
   CleanupTLS ← Lib {"void" "SDL_CleanupTLS" }
   GetDateTimeLocalePreferences ← Lib {"uchar" "SDL_GetDateTimeLocalePreferences" "void*" "void*"}
   GetCurrentTime ← Lib {"uchar" "SDL_GetCurrentTime" "void*"}
-  TimeToDateTime ← Lib {"uchar" "SDL_TimeToDateTime" "int" "void*" "uchar"}
+  TimeToDateTime ← Lib {"uchar" "SDL_TimeToDateTime" "long long" "void*" "uchar"}
   DateTimeToTime ← Lib {"uchar" "SDL_DateTimeToTime" "void*" "void*"}
-  TimeToWindows ← Lib {"void" "SDL_TimeToWindows" "int" "void*" "void*"}
-  TimeFromWindows ← Lib {"int" "SDL_TimeFromWindows" "uint" "uint"}
+  TimeToWindows ← Lib {"void" "SDL_TimeToWindows" "long long" "uint*" "uint*"}
+  TimeFromWindows ← Lib {"long long" "SDL_TimeFromWindows" "uint" "uint"}
   GetDaysInMonth ← Lib {"int" "SDL_GetDaysInMonth" "int" "int"}
   GetDayOfYear ← Lib {"int" "SDL_GetDayOfYear" "int" "int" "int"}
   GetDayOfWeek ← Lib {"int" "SDL_GetDayOfWeek" "int" "int" "int"}
@@ -931,13 +897,11 @@ EventWindowCloseRequested ← 528
   Delay ← Lib {"void" "SDL_Delay" "uint"}
   DelayNS ← Lib {"void" "SDL_DelayNS" "ulong"}
   DelayPrecise ← Lib {"void" "SDL_DelayPrecise" "ulong"}
-  AddTimer ← Lib {"int" "SDL_AddTimer" "uint" "int" "void*"}
-  AddTimerNS ← Lib {"int" "SDL_AddTimerNS" "ulong" "int" "void*"}
-  RemoveTimer ← Lib {"uchar" "SDL_RemoveTimer" "int"}
-  GetTouchDevices ← Lib {"void*" "SDL_GetTouchDevices" "void*"}
-  GetTouchDeviceName ← Lib {"char*" "SDL_GetTouchDeviceName" "int"}
-  GetTouchDeviceType ← Lib {"int" "SDL_GetTouchDeviceType" "int"}
-  GetTouchFingers ← Lib {"void*" "SDL_GetTouchFingers" "int" "void*"}
+  RemoveTimer ← Lib {"uchar" "SDL_RemoveTimer" "uint"}
+  GetTouchDevices ← Lib {"void*" "SDL_GetTouchDevices" "int*"}
+  GetTouchDeviceName ← Lib {"char*" "SDL_GetTouchDeviceName" "ulong"}
+  GetTouchDeviceType ← Lib {"int" "SDL_GetTouchDeviceType" "ulong"}
+  GetTouchFingers ← Lib {"void*" "SDL_GetTouchFingers" "ulong" "int*"}
   CreateTray ← Lib {"void*" "SDL_CreateTray" "void*" "char*"}
   SetTrayIcon ← Lib {"void" "SDL_SetTrayIcon" "void*" "void*"}
   SetTrayTooltip ← Lib {"void" "SDL_SetTrayTooltip" "void*" "char*"}
@@ -945,16 +909,15 @@ EventWindowCloseRequested ← 528
   CreateTraySubmenu ← Lib {"void*" "SDL_CreateTraySubmenu" "void*"}
   GetTrayMenu ← Lib {"void*" "SDL_GetTrayMenu" "void*"}
   GetTraySubmenu ← Lib {"void*" "SDL_GetTraySubmenu" "void*"}
-  GetTrayEntries ← Lib {"void*" "SDL_GetTrayEntries" "void*" "void*"}
+  GetTrayEntries ← Lib {"void*" "SDL_GetTrayEntries" "void*" "int*"}
   RemoveTrayEntry ← Lib {"void" "SDL_RemoveTrayEntry" "void*"}
-  InsertTrayEntryAt ← Lib {"void*" "SDL_InsertTrayEntryAt" "void*" "int" "char*" "int"}
+  InsertTrayEntryAt ← Lib {"void*" "SDL_InsertTrayEntryAt" "void*" "int" "char*" "uint"}
   SetTrayEntryLabel ← Lib {"void" "SDL_SetTrayEntryLabel" "void*" "char*"}
   GetTrayEntryLabel ← Lib {"char*" "SDL_GetTrayEntryLabel" "void*"}
   SetTrayEntryChecked ← Lib {"void" "SDL_SetTrayEntryChecked" "void*" "uchar"}
   GetTrayEntryChecked ← Lib {"uchar" "SDL_GetTrayEntryChecked" "void*"}
   SetTrayEntryEnabled ← Lib {"void" "SDL_SetTrayEntryEnabled" "void*" "uchar"}
   GetTrayEntryEnabled ← Lib {"uchar" "SDL_GetTrayEntryEnabled" "void*"}
-  SetTrayEntryCallback ← Lib {"void" "SDL_SetTrayEntryCallback" "void*" "int" "void*"}
   ClickTrayEntry ← Lib {"void" "SDL_ClickTrayEntry" "void*"}
   DestroyTray ← Lib {"void" "SDL_DestroyTray" "void*"}
   GetTrayEntryParent ← Lib {"void*" "SDL_GetTrayEntryParent" "void*"}
@@ -967,34 +930,34 @@ EventWindowCloseRequested ← 528
   GetVideoDriver ← Lib {"char*" "SDL_GetVideoDriver" "int"}
   GetCurrentVideoDriver ← Lib {"char*" "SDL_GetCurrentVideoDriver" }
   GetSystemTheme ← Lib {"int" "SDL_GetSystemTheme" }
-  GetDisplays ← Lib {"void*" "SDL_GetDisplays" "void*"}
-  GetPrimaryDisplay ← Lib {"int" "SDL_GetPrimaryDisplay" }
-  GetDisplayProperties ← Lib {"uint" "SDL_GetDisplayProperties" "int"}
-  GetDisplayName ← Lib {"char*" "SDL_GetDisplayName" "int"}
-  GetDisplayBounds ← Lib {"uchar" "SDL_GetDisplayBounds" "int" "void*"}
-  GetDisplayUsableBounds ← Lib {"uchar" "SDL_GetDisplayUsableBounds" "int" "void*"}
-  GetNaturalDisplayOrientation ← Lib {"int" "SDL_GetNaturalDisplayOrientation" "int"}
-  GetCurrentDisplayOrientation ← Lib {"int" "SDL_GetCurrentDisplayOrientation" "int"}
-  GetDisplayContentScale ← Lib {"float" "SDL_GetDisplayContentScale" "int"}
-  GetFullscreenDisplayModes ← Lib {"void*" "SDL_GetFullscreenDisplayModes" "int" "void*"}
-  GetClosestFullscreenDisplayMode ← Lib {"uchar" "SDL_GetClosestFullscreenDisplayMode" "int" "int" "int" "float" "uchar" "void*"}
-  GetDesktopDisplayMode ← Lib {"void*" "SDL_GetDesktopDisplayMode" "int"}
-  GetCurrentDisplayMode ← Lib {"void*" "SDL_GetCurrentDisplayMode" "int"}
-  GetDisplayForPoint ← Lib {"int" "SDL_GetDisplayForPoint" "void*"}
-  GetDisplayForRect ← Lib {"int" "SDL_GetDisplayForRect" "void*"}
-  GetDisplayForWindow ← Lib {"int" "SDL_GetDisplayForWindow" "void*"}
+  GetDisplays ← Lib {"void*" "SDL_GetDisplays" "int*"}
+  GetPrimaryDisplay ← Lib {"uint" "SDL_GetPrimaryDisplay" }
+  GetDisplayProperties ← Lib {"uint" "SDL_GetDisplayProperties" "uint"}
+  GetDisplayName ← Lib {"char*" "SDL_GetDisplayName" "uint"}
+  GetDisplayBounds ← Lib {"uchar" "SDL_GetDisplayBounds" "uint" "void*"}
+  GetDisplayUsableBounds ← Lib {"uchar" "SDL_GetDisplayUsableBounds" "uint" "void*"}
+  GetNaturalDisplayOrientation ← Lib {"int" "SDL_GetNaturalDisplayOrientation" "uint"}
+  GetCurrentDisplayOrientation ← Lib {"int" "SDL_GetCurrentDisplayOrientation" "uint"}
+  GetDisplayContentScale ← Lib {"float" "SDL_GetDisplayContentScale" "uint"}
+  GetFullscreenDisplayModes ← Lib {"void*" "SDL_GetFullscreenDisplayModes" "uint" "int*"}
+  GetClosestFullscreenDisplayMode ← Lib {"uchar" "SDL_GetClosestFullscreenDisplayMode" "uint" "int" "int" "float" "uchar" "void*"}
+  GetDesktopDisplayMode ← Lib {"void*" "SDL_GetDesktopDisplayMode" "uint"}
+  GetCurrentDisplayMode ← Lib {"void*" "SDL_GetCurrentDisplayMode" "uint"}
+  GetDisplayForPoint ← Lib {"uint" "SDL_GetDisplayForPoint" "void*"}
+  GetDisplayForRect ← Lib {"uint" "SDL_GetDisplayForRect" "void*"}
+  GetDisplayForWindow ← Lib {"uint" "SDL_GetDisplayForWindow" "void*"}
   GetWindowPixelDensity ← Lib {"float" "SDL_GetWindowPixelDensity" "void*"}
   GetWindowDisplayScale ← Lib {"float" "SDL_GetWindowDisplayScale" "void*"}
   SetWindowFullscreenMode ← Lib {"uchar" "SDL_SetWindowFullscreenMode" "void*" "void*"}
   GetWindowFullscreenMode ← Lib {"void*" "SDL_GetWindowFullscreenMode" "void*"}
   GetWindowICCProfile ← Lib {"void*" "SDL_GetWindowICCProfile" "void*" "void*"}
-  GetWindowPixelFormat ← Lib {"int" "SDL_GetWindowPixelFormat" "void*"}
-  GetWindows ← Lib {"void*" "SDL_GetWindows" "void*"}
+  GetWindowPixelFormat ← Lib {"uint" "SDL_GetWindowPixelFormat" "void*"}
+  GetWindows ← Lib {"void*" "SDL_GetWindows" "int*"}
   CreateWindow ← Lib {"void*" "SDL_CreateWindow" "char*" "int" "int" "ulong"}
   CreatePopupWindow ← Lib {"void*" "SDL_CreatePopupWindow" "void*" "int" "int" "int" "int" "ulong"}
   CreateWindowWithProperties ← Lib {"void*" "SDL_CreateWindowWithProperties" "uint"}
-  GetWindowID ← Lib {"int" "SDL_GetWindowID" "void*"}
-  GetWindowFromID ← Lib {"void*" "SDL_GetWindowFromID" "int"}
+  GetWindowID ← Lib {"uint" "SDL_GetWindowID" "void*"}
+  GetWindowFromID ← Lib {"void*" "SDL_GetWindowFromID" "uint"}
   GetWindowParent ← Lib {"void*" "SDL_GetWindowParent" "void*"}
   GetWindowProperties ← Lib {"uint" "SDL_GetWindowProperties" "void*"}
   GetWindowFlags ← Lib {"ulong" "SDL_GetWindowFlags" "void*"}
@@ -1002,18 +965,18 @@ EventWindowCloseRequested ← 528
   GetWindowTitle ← Lib {"char*" "SDL_GetWindowTitle" "void*"}
   SetWindowIcon ← Lib {"uchar" "SDL_SetWindowIcon" "void*" "void*"}
   SetWindowPosition ← Lib {"uchar" "SDL_SetWindowPosition" "void*" "int" "int"}
-  GetWindowPosition ← Lib {"uchar" "SDL_GetWindowPosition" "void*" "void*" "void*"}
+  GetWindowPosition ← Lib {"uchar" "SDL_GetWindowPosition" "void*" "int*" "int*"}
   SetWindowSize ← Lib {"uchar" "SDL_SetWindowSize" "void*" "int" "int"}
-  GetWindowSize ← Lib {"uchar" "SDL_GetWindowSize" "void*" "void*" "void*"}
+  GetWindowSize ← Lib {"uchar" "SDL_GetWindowSize" "void*" "int*" "int*"}
   GetWindowSafeArea ← Lib {"uchar" "SDL_GetWindowSafeArea" "void*" "void*"}
   SetWindowAspectRatio ← Lib {"uchar" "SDL_SetWindowAspectRatio" "void*" "float" "float"}
-  GetWindowAspectRatio ← Lib {"uchar" "SDL_GetWindowAspectRatio" "void*" "void*" "void*"}
-  GetWindowBordersSize ← Lib {"uchar" "SDL_GetWindowBordersSize" "void*" "void*" "void*" "void*" "void*"}
-  GetWindowSizeInPixels ← Lib {"uchar" "SDL_GetWindowSizeInPixels" "void*" "void*" "void*"}
+  GetWindowAspectRatio ← Lib {"uchar" "SDL_GetWindowAspectRatio" "void*" "float*" "float*"}
+  GetWindowBordersSize ← Lib {"uchar" "SDL_GetWindowBordersSize" "void*" "int*" "int*" "int*" "int*"}
+  GetWindowSizeInPixels ← Lib {"uchar" "SDL_GetWindowSizeInPixels" "void*" "int*" "int*"}
   SetWindowMinimumSize ← Lib {"uchar" "SDL_SetWindowMinimumSize" "void*" "int" "int"}
-  GetWindowMinimumSize ← Lib {"uchar" "SDL_GetWindowMinimumSize" "void*" "void*" "void*"}
+  GetWindowMinimumSize ← Lib {"uchar" "SDL_GetWindowMinimumSize" "void*" "int*" "int*"}
   SetWindowMaximumSize ← Lib {"uchar" "SDL_SetWindowMaximumSize" "void*" "int" "int"}
-  GetWindowMaximumSize ← Lib {"uchar" "SDL_GetWindowMaximumSize" "void*" "void*" "void*"}
+  GetWindowMaximumSize ← Lib {"uchar" "SDL_GetWindowMaximumSize" "void*" "int*" "int*"}
   SetWindowBordered ← Lib {"uchar" "SDL_SetWindowBordered" "void*" "uchar"}
   SetWindowResizable ← Lib {"uchar" "SDL_SetWindowResizable" "void*" "uchar"}
   SetWindowAlwaysOnTop ← Lib {"uchar" "SDL_SetWindowAlwaysOnTop" "void*" "uchar"}
@@ -1029,7 +992,7 @@ EventWindowCloseRequested ← 528
   WindowHasSurface ← Lib {"uchar" "SDL_WindowHasSurface" "void*"}
   GetWindowSurface ← Lib {"void*" "SDL_GetWindowSurface" "void*"}
   SetWindowSurfaceVSync ← Lib {"uchar" "SDL_SetWindowSurfaceVSync" "void*" "int"}
-  GetWindowSurfaceVSync ← Lib {"uchar" "SDL_GetWindowSurfaceVSync" "void*" "void*"}
+  GetWindowSurfaceVSync ← Lib {"uchar" "SDL_GetWindowSurfaceVSync" "void*" "int*"}
   UpdateWindowSurface ← Lib {"uchar" "SDL_UpdateWindowSurface" "void*"}
   UpdateWindowSurfaceRects ← Lib {"uchar" "SDL_UpdateWindowSurfaceRects" "void*" "void*" "int"}
   DestroyWindowSurface ← Lib {"uchar" "SDL_DestroyWindowSurface" "void*"}
@@ -1046,7 +1009,6 @@ EventWindowCloseRequested ← 528
   SetWindowModal ← Lib {"uchar" "SDL_SetWindowModal" "void*" "uchar"}
   SetWindowFocusable ← Lib {"uchar" "SDL_SetWindowFocusable" "void*" "uchar"}
   ShowWindowSystemMenu ← Lib {"uchar" "SDL_ShowWindowSystemMenu" "void*" "int" "int"}
-  SetWindowHitTest ← Lib {"uchar" "SDL_SetWindowHitTest" "void*" "int" "void*"}
   SetWindowShape ← Lib {"uchar" "SDL_SetWindowShape" "void*" "void*"}
   FlashWindow ← Lib {"uchar" "SDL_FlashWindow" "void*" "int"}
   SetWindowProgressState ← Lib {"uchar" "SDL_SetWindowProgressState" "void*" "int"}
@@ -1058,38 +1020,34 @@ EventWindowCloseRequested ← 528
   EnableScreenSaver ← Lib {"uchar" "SDL_EnableScreenSaver" }
   DisableScreenSaver ← Lib {"uchar" "SDL_DisableScreenSaver" }
   GLLoadLibrary ← Lib {"uchar" "SDL_GL_LoadLibrary" "char*"}
-  GLGetProcAddress ← Lib {"int" "SDL_GL_GetProcAddress" "char*"}
-  EGLGetProcAddress ← Lib {"int" "SDL_EGL_GetProcAddress" "char*"}
+  GLGetProcAddress ← Lib {"void*" "SDL_GL_GetProcAddress" "char*"}
+  EGLGetProcAddress ← Lib {"void*" "SDL_EGL_GetProcAddress" "char*"}
   GLUnloadLibrary ← Lib {"void" "SDL_GL_UnloadLibrary" }
   GLExtensionSupported ← Lib {"uchar" "SDL_GL_ExtensionSupported" "char*"}
   GLResetAttributes ← Lib {"void" "SDL_GL_ResetAttributes" }
   GLSetAttribute ← Lib {"uchar" "SDL_GL_SetAttribute" "int" "int"}
-  GLGetAttribute ← Lib {"uchar" "SDL_GL_GetAttribute" "int" "void*"}
+  GLGetAttribute ← Lib {"uchar" "SDL_GL_GetAttribute" "int" "int*"}
   GLCreateContext ← Lib {"void*" "SDL_GL_CreateContext" "void*"}
   GLMakeCurrent ← Lib {"uchar" "SDL_GL_MakeCurrent" "void*" "void*"}
   GLGetCurrentWindow ← Lib {"void*" "SDL_GL_GetCurrentWindow" }
   GLGetCurrentContext ← Lib {"void*" "SDL_GL_GetCurrentContext" }
-  EGLGetCurrentDisplay ← Lib {"int" "SDL_EGL_GetCurrentDisplay" }
-  EGLGetCurrentConfig ← Lib {"int" "SDL_EGL_GetCurrentConfig" }
-  EGLGetWindowSurface ← Lib {"int" "SDL_EGL_GetWindowSurface" "void*"}
-  EGLSetAttributeCallbacks ← Lib {"void" "SDL_EGL_SetAttributeCallbacks" "int" "int" "int" "void*"}
+  EGLGetCurrentDisplay ← Lib {"void*" "SDL_EGL_GetCurrentDisplay" }
+  EGLGetCurrentConfig ← Lib {"void*" "SDL_EGL_GetCurrentConfig" }
+  EGLGetWindowSurface ← Lib {"void*" "SDL_EGL_GetWindowSurface" "void*"}
   GLSetSwapInterval ← Lib {"uchar" "SDL_GL_SetSwapInterval" "int"}
-  GLGetSwapInterval ← Lib {"uchar" "SDL_GL_GetSwapInterval" "void*"}
+  GLGetSwapInterval ← Lib {"uchar" "SDL_GL_GetSwapInterval" "int*"}
   GLSwapWindow ← Lib {"uchar" "SDL_GL_SwapWindow" "void*"}
   GLDestroyContext ← Lib {"uchar" "SDL_GL_DestroyContext" "void*"}
   VulkanLoadLibrary ← Lib {"uchar" "SDL_Vulkan_LoadLibrary" "char*"}
-  VulkanGetVkGetInstanceProcAddr ← Lib {"int" "SDL_Vulkan_GetVkGetInstanceProcAddr" }
+  VulkanGetVkGetInstanceProcAddr ← Lib {"void*" "SDL_Vulkan_GetVkGetInstanceProcAddr" }
   VulkanUnloadLibrary ← Lib {"void" "SDL_Vulkan_UnloadLibrary" }
-  VulkanGetInstanceExtensions ← Lib {"void*" "SDL_Vulkan_GetInstanceExtensions" "void*"}
-  VulkanCreateSurface ← Lib {"uchar" "SDL_Vulkan_CreateSurface" "void*" "int" "void*" "void*"}
-  VulkanDestroySurface ← Lib {"void" "SDL_Vulkan_DestroySurface" "int" "int" "void*"}
-  VulkanGetPresentationSupport ← Lib {"uchar" "SDL_Vulkan_GetPresentationSupport" "int" "int" "uint"}
+  VulkanGetInstanceExtensions ← Lib {"void*" "SDL_Vulkan_GetInstanceExtensions" "uint*"}
+  VulkanCreateSurface ← Lib {"uchar" "SDL_Vulkan_CreateSurface" "void*" "void*" "void*" "void*"}
+  VulkanDestroySurface ← Lib {"void" "SDL_Vulkan_DestroySurface" "void*" "ulong" "void*"}
+  VulkanGetPresentationSupport ← Lib {"uchar" "SDL_Vulkan_GetPresentationSupport" "void*" "void*" "uint"}
 └─╴
 
 # Top-level function bindings.
-SetAssertionHandler ← |2.0 ◌ (Raw.SetAssertionHandler □,2)
-GetDefaultAssertionHandler ← |0.1 (Raw.GetDefaultAssertionHandler {})
-GetAssertionHandler ← |1 Raw.GetAssertionHandler □,1
 GetAssertionReport ← |0.1 (Raw.GetAssertionReport {})
 ResetAssertionReport ← |0.0 (◌ (Raw.ResetAssertionReport {}))
 AsyncIOFromFile ← |2 Raw.AsyncIOFromFile □,2
@@ -1154,7 +1112,6 @@ GetAudioStreamOutputChannelMap ← |2 Raw.GetAudioStreamOutputChannelMap □,2
 SetAudioStreamInputChannelMap ← |3 Raw.SetAudioStreamInputChannelMap □,3
 SetAudioStreamOutputChannelMap ← |3 Raw.SetAudioStreamOutputChannelMap □,3
 PutAudioStreamData ← |3 Raw.PutAudioStreamData □,3
-PutAudioStreamDataNoCopy ← |5 Raw.PutAudioStreamDataNoCopy □,5
 PutAudioStreamPlanarData ← |4 Raw.PutAudioStreamPlanarData □,4
 GetAudioStreamData ← |3 Raw.GetAudioStreamData □,3
 GetAudioStreamAvailable ← |1 Raw.GetAudioStreamAvailable □,1
@@ -1166,11 +1123,7 @@ ResumeAudioStreamDevice ← |1 Raw.ResumeAudioStreamDevice □,1
 AudioStreamDevicePaused ← |1 Raw.AudioStreamDevicePaused □,1
 LockAudioStream ← |1 Raw.LockAudioStream □,1
 UnlockAudioStream ← |1 Raw.UnlockAudioStream □,1
-SetAudioStreamGetCallback ← |3 Raw.SetAudioStreamGetCallback □,3
-SetAudioStreamPutCallback ← |3 Raw.SetAudioStreamPutCallback □,3
 DestroyAudioStream ← |1.0 ◌ (Raw.DestroyAudioStream □,1)
-OpenAudioDeviceStream ← |4 Raw.OpenAudioDeviceStream □,4
-SetAudioPostmixCallback ← |3 Raw.SetAudioPostmixCallback □,3
 LoadWAVIO ← |5 Raw.LoadWAVIO □,5
 LoadWAV ← |4 Raw.LoadWAV □,4
 MixAudio ← |5 Raw.MixAudio □,5
@@ -1199,7 +1152,6 @@ HasClipboardText ← |0.1 (Raw.HasClipboardText {})
 SetPrimarySelectionText ← |1 Raw.SetPrimarySelectionText □,1
 GetPrimarySelectionText ← |0.1 (Raw.GetPrimarySelectionText {})
 HasPrimarySelectionText ← |0.1 (Raw.HasPrimarySelectionText {})
-SetClipboardData ← |5 Raw.SetClipboardData □,5
 ClearClipboardData ← |0.1 (Raw.ClearClipboardData {})
 GetClipboardData ← |2 Raw.GetClipboardData □,2
 HasClipboardData ← |1 Raw.HasClipboardData □,1
@@ -1223,10 +1175,6 @@ HasLASX ← |0.1 (Raw.HasLASX {})
 GetSystemRAM ← |0.1 (Raw.GetSystemRAM {})
 GetSIMDAlignment ← |0.1 (Raw.GetSIMDAlignment {})
 GetSystemPageSize ← |0.1 (Raw.GetSystemPageSize {})
-ShowOpenFileDialog ← |7.0 ◌ (Raw.ShowOpenFileDialog □,7)
-ShowSaveFileDialog ← |6.0 ◌ (Raw.ShowSaveFileDialog □,6)
-ShowOpenFolderDialog ← |5.0 ◌ (Raw.ShowOpenFolderDialog □,5)
-ShowFileDialogWithProperties ← |4.0 ◌ (Raw.ShowFileDialogWithProperties □,4)
 OutOfMemory ← |0.1 (Raw.OutOfMemory {})
 GetError ← |0.1 (Raw.GetError {})
 ClearError ← |0.1 (Raw.ClearError {})
@@ -1240,11 +1188,7 @@ PollEvent ← |1 Raw.PollEvent □,1
 WaitEvent ← |1 Raw.WaitEvent □,1
 WaitEventTimeout ← |2 Raw.WaitEventTimeout □,2
 PushEvent ← |1 Raw.PushEvent □,1
-SetEventFilter ← |2.0 ◌ (Raw.SetEventFilter □,2)
 GetEventFilter ← |2 Raw.GetEventFilter □,2
-AddEventWatch ← |2 Raw.AddEventWatch □,2
-RemoveEventWatch ← |2.0 ◌ (Raw.RemoveEventWatch □,2)
-FilterEvents ← |2.0 ◌ (Raw.FilterEvents □,2)
 SetEventEnabled ← |2.0 ◌ (Raw.SetEventEnabled □,2)
 EventEnabled ← |1 Raw.EventEnabled □,1
 RegisterEvents ← |1 Raw.RegisterEvents □,1
@@ -1254,7 +1198,6 @@ GetBasePath ← |0.1 (Raw.GetBasePath {})
 GetPrefPath ← |2 Raw.GetPrefPath □,2
 GetUserFolder ← |1 Raw.GetUserFolder □,1
 CreateDirectory ← |1 Raw.CreateDirectory □,1
-EnumerateDirectory ← |3 Raw.EnumerateDirectory □,3
 RemovePath ← |1 Raw.RemovePath □,1
 RenamePath ← |2 Raw.RenamePath □,2
 CopyFile ← |2 Raw.CopyFile □,2
@@ -1469,15 +1412,12 @@ SetHint ← |2 Raw.SetHint □,2
 ResetHint ← |1 Raw.ResetHint □,1
 ResetHints ← |0.0 (◌ (Raw.ResetHints {}))
 GetHintBoolean ← |2 Raw.GetHintBoolean □,2
-AddHintCallback ← |3 Raw.AddHintCallback □,3
-RemoveHintCallback ← |3.0 ◌ (Raw.RemoveHintCallback □,3)
 Init ← |1 Raw.Init □,1
 InitSubSystem ← |1 Raw.InitSubSystem □,1
 QuitSubSystem ← |1.0 ◌ (Raw.QuitSubSystem □,1)
 WasInit ← |1 Raw.WasInit □,1
 Quit ← |0.0 (◌ (Raw.Quit {}))
 IsMainThread ← |0.1 (Raw.IsMainThread {})
-RunOnMainThread ← |3 Raw.RunOnMainThread □,3
 SetAppMetadata ← |3 Raw.SetAppMetadata □,3
 SetAppMetadataProperty ← |2 Raw.SetAppMetadataProperty □,2
 GetAppMetadataProperty ← |1 Raw.GetAppMetadataProperty □,1
@@ -1616,9 +1556,7 @@ SetLogPriority ← |2.0 ◌ (Raw.SetLogPriority □,2)
 GetLogPriority ← |1 Raw.GetLogPriority □,1
 ResetLogPriorities ← |0.0 (◌ (Raw.ResetLogPriorities {}))
 SetLogPriorityPrefix ← |2 Raw.SetLogPriorityPrefix □,2
-GetDefaultLogOutputFunction ← |0.1 (Raw.GetDefaultLogOutputFunction {})
 GetLogOutputFunction ← |2.0 ◌ (Raw.GetLogOutputFunction □,2)
-SetLogOutputFunction ← |2.0 ◌ (Raw.SetLogOutputFunction □,2)
 SetMainReady ← |0.0 (◌ (Raw.SetMainReady {}))
 RegisterApp ← |3 Raw.RegisterApp □,3
 UnregisterApp ← |0.0 (◌ (Raw.UnregisterApp {}))
@@ -1638,7 +1576,6 @@ GetGlobalMouseState ← |2 Raw.GetGlobalMouseState □,2
 GetRelativeMouseState ← |2 Raw.GetRelativeMouseState □,2
 WarpMouseInWindow ← |3.0 ◌ (Raw.WarpMouseInWindow □,3)
 WarpMouseGlobal ← |2 Raw.WarpMouseGlobal □,2
-SetRelativeMouseTransform ← |2 Raw.SetRelativeMouseTransform □,2
 SetWindowRelativeMouseMode ← |2 Raw.SetWindowRelativeMouseMode □,2
 GetWindowRelativeMouseMode ← |1 Raw.GetWindowRelativeMouseMode □,1
 CaptureMouse ← |1 Raw.CaptureMouse □,1
@@ -1700,7 +1637,6 @@ CreateProperties ← |0.1 (Raw.CreateProperties {})
 CopyProperties ← |2 Raw.CopyProperties □,2
 LockProperties ← |1 Raw.LockProperties □,1
 UnlockProperties ← |1.0 ◌ (Raw.UnlockProperties □,1)
-SetPointerPropertyWithCleanup ← |5 Raw.SetPointerPropertyWithCleanup □,5
 SetPointerProperty ← |3 Raw.SetPointerProperty □,3
 SetStringProperty ← |3 Raw.SetStringProperty □,3
 SetNumberProperty ← |3 Raw.SetNumberProperty □,3
@@ -1714,7 +1650,6 @@ GetNumberProperty ← |3 Raw.GetNumberProperty □,3
 GetFloatProperty ← |3 Raw.GetFloatProperty □,3
 GetBooleanProperty ← |3 Raw.GetBooleanProperty □,3
 ClearProperty ← |2 Raw.ClearProperty □,2
-EnumerateProperties ← |3 Raw.EnumerateProperties □,3
 DestroyProperties ← |1.0 ◌ (Raw.DestroyProperties □,1)
 HasRectIntersection ← |2 Raw.HasRectIntersection □,2
 GetRectIntersection ← |3 Raw.GetRectIntersection □,3
@@ -1843,7 +1778,6 @@ CloseSensor ← |1.0 ◌ (Raw.CloseSensor □,1)
 UpdateSensors ← |0.0 (◌ (Raw.UpdateSensors {}))
 GetOriginalMemoryFunctions ← |4.0 ◌ (Raw.GetOriginalMemoryFunctions □,4)
 GetMemoryFunctions ← |4.0 ◌ (Raw.GetMemoryFunctions □,4)
-SetMemoryFunctions ← |4 Raw.SetMemoryFunctions □,4
 GetNumAllocations ← |0.1 (Raw.GetNumAllocations {})
 GetEnvironment ← |0.1 (Raw.GetEnvironment {})
 CreateEnvironment ← |1 Raw.CreateEnvironment □,1
@@ -1865,7 +1799,6 @@ GetStorageFileSize ← |3 Raw.GetStorageFileSize □,3
 ReadStorageFile ← |4 Raw.ReadStorageFile □,4
 WriteStorageFile ← |4 Raw.WriteStorageFile □,4
 CreateStorageDirectory ← |2 Raw.CreateStorageDirectory □,2
-EnumerateStorageDirectory ← |4 Raw.EnumerateStorageDirectory □,4
 RemoveStoragePath ← |2 Raw.RemoveStoragePath □,2
 RenameStoragePath ← |3 Raw.RenameStoragePath □,3
 CopyStorageFile ← |3 Raw.CopyStorageFile □,3
@@ -1937,13 +1870,10 @@ ReadSurfacePixel ← |7 Raw.ReadSurfacePixel □,7
 ReadSurfacePixelFloat ← |7 Raw.ReadSurfacePixelFloat □,7
 WriteSurfacePixel ← |7 Raw.WriteSurfacePixel □,7
 WriteSurfacePixelFloat ← |7 Raw.WriteSurfacePixelFloat □,7
-SetWindowsMessageHook ← |2.0 ◌ (Raw.SetWindowsMessageHook □,2)
 GetDirectThreeDNineAdapterIndex ← |1 Raw.GetDirectThreeDNineAdapterIndex □,1
 GetDXGIOutputInfo ← |3 Raw.GetDXGIOutputInfo □,3
-SetXOneOneEventHook ← |2.0 ◌ (Raw.SetXOneOneEventHook □,2)
 SetLinuxThreadPriority ← |2 Raw.SetLinuxThreadPriority □,2
 SetLinuxThreadPriorityAndPolicy ← |3 Raw.SetLinuxThreadPriorityAndPolicy □,3
-SetiOSAnimationCallback ← |4 Raw.SetiOSAnimationCallback □,4
 SetiOSEventPump ← |1.0 ◌ (Raw.SetiOSEventPump □,1)
 GetAndroidJNIEnv ← |0.1 (Raw.GetAndroidJNIEnv {})
 GetAndroidActivity ← |0.1 (Raw.GetAndroidActivity {})
@@ -1955,7 +1885,6 @@ GetAndroidInternalStoragePath ← |0.1 (Raw.GetAndroidInternalStoragePath {})
 GetAndroidExternalStorageState ← |0.1 (Raw.GetAndroidExternalStorageState {})
 GetAndroidExternalStoragePath ← |0.1 (Raw.GetAndroidExternalStoragePath {})
 GetAndroidCachePath ← |0.1 (Raw.GetAndroidCachePath {})
-RequestAndroidPermission ← |3 Raw.RequestAndroidPermission □,3
 ShowAndroidToast ← |5 Raw.ShowAndroidToast □,5
 SendAndroidMessage ← |2 Raw.SendAndroidMessage □,2
 IsTablet ← |0.1 (Raw.IsTablet {})
@@ -1970,9 +1899,7 @@ OnApplicationDidEnterForeground ← |0.0 (◌ (Raw.OnApplicationDidEnterForegrou
 OnApplicationDidChangeStatusBarOrientation ← |0.0 (◌ (Raw.OnApplicationDidChangeStatusBarOrientation {}))
 GetGDKTaskQueue ← |1 Raw.GetGDKTaskQueue □,1
 GetGDKDefaultUser ← |1 Raw.GetGDKDefaultUser □,1
-CreateThread ← |3 Raw.CreateThread □,3
 CreateThreadWithProperties ← |1 Raw.CreateThreadWithProperties □,1
-CreateThreadRuntime ← |5 Raw.CreateThreadRuntime □,5
 CreateThreadWithPropertiesRuntime ← |3 Raw.CreateThreadWithPropertiesRuntime □,3
 GetThreadName ← |1 Raw.GetThreadName □,1
 GetCurrentThreadID ← |0.1 (Raw.GetCurrentThreadID {})
@@ -1982,7 +1909,6 @@ WaitThread ← |2.0 ◌ (Raw.WaitThread □,2)
 GetThreadState ← |1 Raw.GetThreadState □,1
 DetachThread ← |1.0 ◌ (Raw.DetachThread □,1)
 GetTLS ← |1 Raw.GetTLS □,1
-SetTLS ← |3 Raw.SetTLS □,3
 CleanupTLS ← |0.0 (◌ (Raw.CleanupTLS {}))
 GetDateTimeLocalePreferences ← |2 Raw.GetDateTimeLocalePreferences □,2
 GetCurrentTime ← |1 Raw.GetCurrentTime □,1
@@ -2000,8 +1926,6 @@ GetPerformanceFrequency ← |0.1 (Raw.GetPerformanceFrequency {})
 Delay ← |1.0 ◌ (Raw.Delay □,1)
 DelayNS ← |1.0 ◌ (Raw.DelayNS □,1)
 DelayPrecise ← |1.0 ◌ (Raw.DelayPrecise □,1)
-AddTimer ← |3 Raw.AddTimer □,3
-AddTimerNS ← |3 Raw.AddTimerNS □,3
 RemoveTimer ← |1 Raw.RemoveTimer □,1
 GetTouchDevices ← |1 Raw.GetTouchDevices □,1
 GetTouchDeviceName ← |1 Raw.GetTouchDeviceName □,1
@@ -2023,7 +1947,6 @@ SetTrayEntryChecked ← |2.0 ◌ (Raw.SetTrayEntryChecked □,2)
 GetTrayEntryChecked ← |1 Raw.GetTrayEntryChecked □,1
 SetTrayEntryEnabled ← |2.0 ◌ (Raw.SetTrayEntryEnabled □,2)
 GetTrayEntryEnabled ← |1 Raw.GetTrayEntryEnabled □,1
-SetTrayEntryCallback ← |3.0 ◌ (Raw.SetTrayEntryCallback □,3)
 ClickTrayEntry ← |1.0 ◌ (Raw.ClickTrayEntry □,1)
 DestroyTray ← |1.0 ◌ (Raw.DestroyTray □,1)
 GetTrayEntryParent ← |1 Raw.GetTrayEntryParent □,1
@@ -2115,7 +2038,6 @@ SetWindowParent ← |2 Raw.SetWindowParent □,2
 SetWindowModal ← |2 Raw.SetWindowModal □,2
 SetWindowFocusable ← |2 Raw.SetWindowFocusable □,2
 ShowWindowSystemMenu ← |3 Raw.ShowWindowSystemMenu □,3
-SetWindowHitTest ← |3 Raw.SetWindowHitTest □,3
 SetWindowShape ← |2 Raw.SetWindowShape □,2
 FlashWindow ← |2 Raw.FlashWindow □,2
 SetWindowProgressState ← |2 Raw.SetWindowProgressState □,2
@@ -2141,7 +2063,6 @@ GLGetCurrentContext ← |0.1 (Raw.GLGetCurrentContext {})
 EGLGetCurrentDisplay ← |0.1 (Raw.EGLGetCurrentDisplay {})
 EGLGetCurrentConfig ← |0.1 (Raw.EGLGetCurrentConfig {})
 EGLGetWindowSurface ← |1 Raw.EGLGetWindowSurface □,1
-EGLSetAttributeCallbacks ← |4.0 ◌ (Raw.EGLSetAttributeCallbacks □,4)
 GLSetSwapInterval ← |1 Raw.GLSetSwapInterval □,1
 GLGetSwapInterval ← |1 Raw.GLGetSwapInterval □,1
 GLSwapWindow ← |1 Raw.GLSwapWindow □,1

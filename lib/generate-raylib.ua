@@ -69,17 +69,49 @@ CTypeNames ← {
   "unsigned long long"
   "char *"
   "const char *"
+  "char **"
   "void *"
   "const void *"
   "unsigned char *"
   "const unsigned char *"
+  "unsigned short *"
   "int *"
+  "const int *"
   "unsigned int *"
   "float *"
+  "const float *"
   "float[2]"
   "float[4]"
+  "float[32]"
   "char[32]"
   "int[4]"
+  "Color *"
+  "const GlyphInfo *"
+  "GlyphInfo *"
+  "Image *"
+  "AutomationEvent *"
+  "AutomationEventList *"
+  "BoneInfo *"
+  "Camera *"
+  "MaterialMap *"
+  "Material *"
+  "Matrix *"
+  "const Matrix *"
+  "Matrix[2]"
+  "Mesh *"
+  "Model *"
+  "ModelAnimPose"
+  "ModelAnimPose *"
+  "ModelAnimation *"
+  "Rectangle *"
+  "Rectangle **"
+  "Texture2D *"
+  "const Vector2 *"
+  "Vector2 *"
+  "const Vector3 *"
+  "Wave *"
+  "rAudioBuffer *"
+  "rAudioProcessor *"
 }
 
 CLayoutNames ← {
@@ -101,15 +133,47 @@ CLayoutNames ← {
   "char*"
   "void*"
   "void*"
+  "void*"
   "uchar*"
   "uchar*"
+  "ushort*"
+  "int*"
   "int*"
   "uint*"
   "float*"
+  "float*"
   "float[2]"
   "float[4]"
+  "float[32]"
   "char[32]"
   "int[4]"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "float[32]"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
+  "void*"
 }
 
 CSignatureMap ← comptime(map CTypeNames ⍚Quote CLayoutNames)
@@ -135,6 +199,15 @@ ValueTypeNames ← {
   "Camera2D"
   "Camera3D"
   "Camera"
+  "Mesh"
+  "Shader"
+  "MaterialMap"
+  "Material"
+  "Transform"
+  "BoneInfo"
+  "ModelSkeleton"
+  "Model"
+  "ModelAnimation"
   "Ray"
   "RayCollision"
   "BoundingBox"
@@ -164,8 +237,8 @@ AliasLayoutMap ← comptime(map {
     "CameraThreeDLayout"
   })
 
-TypeName   ← |1 ⍣(get ⊙ValueLayoutMap)(⍣(get ⊙CSignatureMap)"\"void*\"")
-LayoutType ← |1 ⍣(get ⊙AliasLayoutMap)(⍣(get ⊙ValueLayoutMap)(⍣(get ⊙CLayoutMap)"void*"))
+TypeName   ← |1 ⍣(get ⊙ValueLayoutMap)(⍣(get ⊙CSignatureMap)"\"UNSUPPORTED\"")
+LayoutType ← |1 ⍣(get ⊙AliasLayoutMap)(⍣(get ⊙ValueLayoutMap)(⍣(get ⊙CLayoutMap)"UNSUPPORTED"))
 ValueName  ← |1 ⍣(get ⊙ValueNameMap)∘
 
 KnownCLayout    ← |1 has ⊙CLayoutMap
@@ -182,6 +255,7 @@ JoinFields      ← /$"_|_"
 PreludePrefix ← comptime(JoinLines {
     "# Generated from raylib rlparser JSON by <lib/generate-raylib.ua>."
     "# Do not edit by hand."
+    "# Unsupported ABI paths are intentionally omitted."
     "# Experimental!"
     "# Type check!"
     ""
@@ -238,14 +312,14 @@ RenderTypePrelude ← |1 (
 )
 
 EnumName          ← ⍣(get ⊙EnumRenames)∘ GetName
-RenderEnumVariant ← |1 $"  |_" DigitNames PascalName SplitUnders GetName
+RenderEnumVariant ← |1 $"  _ ← _" ⊃(DigitNames PascalName SplitUnders GetName|°⋕ GetValue)
 RenderEnumCValue  ← |1 °⋕ GetValue
 EnumVariants      ← |1 JoinLines ⍚RenderEnumVariant °□get "values"
 EnumCValues       ← |1 JoinWords ⍚RenderEnumCValue °□get "values"
 
 RenderEnumBlock ← |1 (
   ⊃(EnumName|EnumVariants|EnumCValues)
-  $"┌─╴_\n_\n  CValues ← [_]\n  ToC ← ⌅(|1 ⊡⊙CValues| |1 ⊢⊚=⊙CValues)\n  FromC ← °ToC\n└─╴"
+  $"┌─╴_\n_\n  CValues ← [_]\n  ToC ← ⊢\n  FromC ← ⊢\n└─╴"
 )
 
 GetDefines      ← °□get "defines"
@@ -266,6 +340,8 @@ BuildFunctionSig ← |1 (
   ⊃(TypeName GetReturnType|Quote GetName|JoinWords ⍚LookupParamType GetParams)
   $"_ _ _"
 )
+FunctionSupported ← |1 =0 /+ ⌕ "UNSUPPORTED" BuildFunctionSig
+SupportedFunctions ← |1 ▽⊃(≡◇FunctionSupported|∘)
 BeginPairName ← |1 $"End_" ↘5 GetName
 BeginFunction ← |1 >0 /+ Starts "Begin" GetName
 EndFunction   ← |1 >0 /+ Starts "End" GetName
@@ -285,10 +361,10 @@ BuildBeginObverse ← |1 (
 )
 BuildBeginEndPair ← |1 $"_\n_" ⊃(BuildBeginObverse|BuildEndFunction)
 
-RenderRawFunctions ← |1 CGen.RawFunctionBlock ⍚BuildRawFunction GetFunctions
+RenderRawFunctions ← |1 CGen.RawFunctionBlock ⍚BuildRawFunction SupportedFunctions GetFunctions
 
 RenderFunctions ← |1 (
-  Fns ← GetFunctions
+  Fns ← SupportedFunctions GetFunctions
   BeginFns ← ▽⊃(≡◇BeginFunction|∘) Fns
   PairedFunction ← |1 >0 /+ ⊃[BeginFunction|EndFunction]
   RegularFns ← ▽⊃(¬≡◇PairedFunction|∘) Fns
