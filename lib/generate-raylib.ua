@@ -15,7 +15,7 @@ GetReturnType ← °□get "returnType"
 GetParams     ← |1 ⍣(°□get "params"){}
 GetFields     ← °□get "fields"
 
-AssertStringLiteral ← ⍤"Expected string literal" /× =@" ⊂ ⊃(⊡0|⊡¯1) ⯾₁∞ °□⊢
+AssertStringLiteral ← ⍤"Expected string literal" /× =@" ⊂ ⊃(⊡0|⊡¯1) ⊨{𝕌∞} °□⊢
 
 TitleWord    ← ⍜⊡⌵0¯⌵
 SplitUnders  ← ⊜□⊸≠@_
@@ -245,11 +245,11 @@ KnownCLayout    ← |1 has ⊙CLayoutMap
 ContainsStar    ← |1 >0 /+ ⌕ "*"
 StringCType     ← |1 >0 /+ ⊃[(Starts "char *")|(Starts "const char *")|(Starts "char[")]
 NumberCType     ← |1 /× ⊃[KnownCLayout|¬StringCType|¬ContainsStar|¬≍"void"]
-ValidatorKind   ← |1 /+ ⊃[NumberCType|((×2) StringCType)]
-ValidatorSuffix ← |1 ⨬(⋅""|⋅": Number"|⋅": String") ValidatorKind ⊸∘
+InitializerKind   ← |1 /+ ⊃[NumberCType|((×2) StringCType)]
+InitializerSuffix ← |1 ⨬(⋅""|⋅" ← Number"|⋅" ← String") InitializerKind ⊸∘
 
 FieldName       ← |1 DigitNames TitleWord GetName
-RenderDataField ← |1 $"__" ⊃(FieldName|ValidatorSuffix GetType)
+RenderDataField ← |1 $"__" ⊃(FieldName|InitializerSuffix GetType)
 JoinFields      ← /$"_|_"
 
 PreludePrefix ← comptime(JoinLines {
@@ -264,8 +264,8 @@ PreludePrefix ← comptime(JoinLines {
 StaticPrelude ← comptime(JoinLines {
     "Lib ← LibLoader~ResolveLibrary \"raylib\" \"raylib\""
     ""
-    "Number ← °0type"
-    "String ← °1type"
+    "Number ← ⊨{ℝ}"
+    "String ← ⊨{𝕌}"
   })
 
 GeneratePrelude ← |1 $"_\n_" ⊃(⋅PreludePrefix|$"LibLoader ~ \"_\"")
@@ -276,7 +276,7 @@ RenderColorLine ← |1 (
 
 FilterColors     ← ▽⊃(≡◇(≍"COLOR" °□get "type")|∘)
 ColorLines       ← JoinLines ⍚RenderColorLine FilterColors
-RenderColorBlock ← |1 $"┌─╴Color\n  ~[R: Number|G: Number|B: Number|A: Number]\n_\n└─╴" ColorLines
+RenderColorBlock ← |1 $"┌─╴Color\n  ~[R ← Number|G ← Number|B ← Number|A ← Number]\n_\n└─╴" ColorLines
 
 StructName        ← |1 ValueName GetName
 StructLayoutName  ← |1 $"_Layout" StructName

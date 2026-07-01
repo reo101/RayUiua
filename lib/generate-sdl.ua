@@ -12,7 +12,7 @@ GetName       ← °□get "name"
 GetReturnType ← °□get "returnType"
 GetParams     ← |1 ⍣(°□get "params"){}
 
-AssertStringLiteral ← ⍤"Expected string literal" /× =@" ⊂ ⊃(⊡0|⊡¯1) ⯾₁∞ °□⊢
+AssertStringLiteral ← ⍤"Expected string literal" /× =@" ⊂ ⊃(⊡0|⊡¯1) ⊨{𝕌∞} °□⊢
 Quote               ← $"\"_\""
 SplitUnders         ← ⊜□⊸≠@_
 PascalName          ← /◇⊂
@@ -398,8 +398,8 @@ PreludePrefix ← comptime(JoinLines {
 StaticPrelude ← comptime(JoinLines {
     "Lib ← LibLoader~ResolveLibrary \"sdl3\" \"SDL3\""
     ""
-    "Number ← °0type"
-    "String ← °1type"
+    "Number ← ⊨{ℝ}"
+    "String ← ⊨{𝕌}"
     ""
     "InitVideo ← 32"
     "WindowOpenGL ← 2"

@@ -15,6 +15,21 @@ RL.IsKeyDown RL.Key.KeyA
 
 `ToC` and `FromC` remain identity helpers for compatibility.
 
+## Data definition type checking
+
+Requires Uiua 0.19.1. Numeric and character fields use `validate` (`⊨`) in field initializers, so their types are included in each data definition's `.t` specification:
+
+```uiua
+# Experimental!
+RL ~ "../../lib/raylib"
+Point ← RL.VectorTwo 10 20
+⊨ RL.VectorTwo.t Point
+```
+
+`Number ← ⊨{ℝ}` and `String ← ⊨{𝕌}` retain the previous type-only checks, including support for array-valued fields. Pointer and nested-struct fields remain unconstrained. Initializers validate construction, not subsequent field mutation; use `⊨ Struct.t` to explicitly revalidate a value.
+
+Run the regression checks in the dev shell with `uiua test tests/data-validation.ua`.
+
 ## Intentionally unsupported
 
 These raylib APIs are intentionally omitted because Uiua `&ffi` currently does not provide the needed ABI feature.

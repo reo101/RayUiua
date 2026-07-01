@@ -7,7 +7,7 @@
 
 Digits ← "0123456789"
 
-AssertStringLiteral ← ⍤"Expected string literal" /× =@" ⊂ ⊃(⊡0|⊡¯1) ⯾₁∞ °□⊢
+AssertStringLiteral ← ⍤"Expected string literal" /× =@" ⊂ ⊃(⊡0|⊡¯1) ⊨{𝕌∞} °□⊢
 JoinBy!      ←^ $"$\"\__\_\"" ⇌↘1⇌↘1 °□⊢ ⊸AssertStringLiteral
 JoinLines    ← /JoinBy!"\n"
 

@@ -8,8 +8,8 @@ LibLoader ~ "loader"
 
 Lib ← LibLoader~ResolveLibrary "sdl3" "SDL3"
 
-Number ← °0type
-String ← °1type
+Number ← ⊨{ℝ}
+String ← ⊨{𝕌}
 
 InitVideo ← 32
 WindowOpenGL ← 2
